@@ -22,6 +22,7 @@ import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
 import HeaderForm02_PL2B from './HeaderForm02PL2B';
 import TableForm02PL2B from './TableForm02PL2B';
+import { PrintfPDF } from './pdfForm02b_PLIIb/PrintfPDF';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -203,33 +204,19 @@ const Form02b_PLIIb = ({route}) => {
         <TouchableOpacity
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
-            let dataFix = data02b_PLIIb;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            console.log(exportPDF);
-            if (exportPDF) navigation.navigate('ViewPDF');
-            else Alert.alert('Thất bại', `không thể xem file pdf`);
+            // let dataFix = dataMau;
+            // dataFix.dairy_name = 'Mẫu Thông tin vận tải'+'_'+Math.floor(Math.random() * 100000);
+            const result= ExportPDF({dairyname : 'Mẫu Thông tin vận tải'+'_'+Math.floor(Math.random() * 100000)});
+            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
-            if (!netInfo.isConnected) {
-              ToastAndroid.show(
-                'Vui lòng kết nối internet.',
-                ToastAndroid.SHORT,
-              );
-              return;
-            }
-            let dataFix = data02b_PLIIb;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            if (exportPDF == true)
-              uploadFile(
-                `/storage/emulated/0/Android/data/com.khanhhoiapp/files/pdf/filemau.pdf`,
-              );
-            else Alert.alert('Thất bại', `không thể xuất file pdf`);
+            let dataFix = {...data02b_PLIIb};
+
+            PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

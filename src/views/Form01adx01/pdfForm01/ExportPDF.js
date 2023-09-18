@@ -261,7 +261,7 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
                                 <div style="margin: 16pt 16pt 0 0;">
                                     <div style="display: flex;">
                                         <div style="width: 50%;">
-                                            1. Họ và tên chủ tàu: ${duLieu?.ten_chutau || '......................................................'}
+                                            1. Họ và tên chủ tàu: ${duLieu?.ten_chutau || '............................................................................'}
                                         </div>
                                         <div style="width: 50%;">
                                             ;2. Họ và tên thuyền trưởng: ${duLieu?.ten_thuyentruong || '..........................................................'};
@@ -270,10 +270,10 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
         
                                     <div style="display: flex; margin-top: 8pt;">
                                         <div style="width: 33%;">
-                                            3. Số đăng ký tàu: ${duLieu?.tau_bs || '.............................'}
+                                            3. Số đăng ký tàu: ${duLieu?.tau_bs || '.......................................'}
                                         </div>
                                         <div style="width: 33%;">
-                                            4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat || '..............'} m
+                                            4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat || '..................'} m
                                         </div>
         
                                         <div style="width: 34%;">
@@ -283,10 +283,10 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
         
                                     <div style="display: flex;margin-top: 8pt;">
                                         <div style="width: 50%;">
-                                            6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so || '..........................'}
+                                            6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so || '................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ;Thời hạn đến: ${duLieu?.gpkt_thoihan || '..........................'}
+                                            ;Thời hạn đến: ${duLieu?.gpkt_thoihan || '................................................'}
                                         </div>
                                     </div>
                                     <div style="display: flex;margin-top: 8pt;">
@@ -363,10 +363,10 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
                                             border-bottom: 1pt solid #2B3D4F;">
                                 <div style="display: flex">
                                     <div style="width: 50%;">
-10: Cảng đi: ${duLieu?.cang_di || '............................................................'}
+                                    10: Cảng đi: ${duLieu?.cang_di || '............................................................'}
                                     </div>
                                     <div style="width: 50%;">
-                                        ; Thời gian đi: Ngày ${duLieu?.ngay_di ? moment(duLieu?.ngay_di).format('LL') : '.......'} 
+                                        ; Thời gian đi: ${duLieu?.ngay_di ? moment(duLieu?.ngay_di).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'} 
                                     </div>
                                 </div>
                                 <div style="display: flex;margin-top: 4pt;">
@@ -374,12 +374,12 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
                                         11: Cảng về: ${duLieu?.cang_ve || '............................................................'}
                                     </div>
                                     <div style="width: 50%;">
-                                        ; Thời gian cập: Ngày  ${duLieu?.ngay_ve ? moment(duLieu?.ngay_ve).format('LL') : '.......'} 
+                                        ; Thời gian cập: ${duLieu?.ngay_ve ? moment(duLieu?.ngay_ve).format('[Ngày ]LL') : 'Ngày .... Tháng .... Năm ....'} 
                                     </div>
                                 </div>
                                 <div style="display: flex;margin-top: 4pt;">
                                     <div style="width: 50%;">
-                                        12: Nộp Nhật ký: Ngày ${duLieu?.ngaynop ? moment(duLieu?.ngaynop).format('LL') : '.......'} 
+                                        12: Nộp Nhật ký: ${duLieu?.ngaynop ? moment(duLieu?.ngaynop).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'} 
                                     </div>
                                     <div style="width: 50%;">
                                         ; Vào Sổ số: ${duLieu?.vaoso_so || '.........................................'}
@@ -416,8 +416,7 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
                                 <p class="s4">
                                     Thời điểm thả (giờ, phút, ngày, tháng)</p>
                             </td>
-        
-<td style="text-align: center; vertical-align: middle; width: 12%;" colspan="2"
+                            <td style="text-align: center; vertical-align: middle; width: 12%;" colspan="2"
                                 bgcolor="#D1D6DB">
                                 <p class="s4">
                                     Vị trí thả </p>
@@ -595,10 +594,10 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
                                 ${totalByType[8] == 0 ? '' : totalByType[8]}
                             </td>
                             <td class="center-table s5">
-                                ${(totalByType[0] + totalByType[1] + totalByType[2] + totalByType[3] + totalByType[4] + totalByType[5] + totalByType[6] + totalByType[7] + totalByType[8])
-                                    ==0?'':
-                                (totalByType[0] + totalByType[1] + totalByType[2] + totalByType[3] + totalByType[4] + totalByType[5] + totalByType[6] + totalByType[7] + totalByType[8])}
-                            </td>
+                            ${(totalByType[0] + totalByType[1] + totalByType[2] + totalByType[3] + totalByType[4] + totalByType[5] + totalByType[6] + totalByType[7] + totalByType[8])
+                == 0 ? '' :
+                (totalByType[0] + totalByType[1] + totalByType[2] + totalByType[3] + totalByType[4] + totalByType[5] + totalByType[6] + totalByType[7] + totalByType[8])}
+                        </td>
                         </tr>
                     </table>
         
@@ -697,9 +696,9 @@ Thông tin tàu thu mua/chuyển tải </p>
                         </tr>
                         ${duLieu?.thumua.map((line, index) => {
 
-            klg += Number(line?.daban_ct_khoiluong);
+                    klg += Number(line?.daban_ct_khoiluong);
 
-            return `
+                    return `
                         <tr>
                             <td class="s5 center-table">
                                 ${index + 1}
@@ -711,27 +710,27 @@ Thông tin tàu thu mua/chuyển tải </p>
                                 </p>
                             </td>
                             <td class="s5 center-table">
-                                ${line?.tm_ct_bstau}
+                                ${line?.tm_ct_bstau || ''}
                             </td>
                             <td class="s5 center-table">
-                                ${line?.tm_ct_gpkt}
+                                ${line?.tm_ct_gpkt || ''}
                                 </td>
                             <td class="center-table">
                                 <p style="width: 100%;" class="s5">
-                                ${line?.tm_ct_vt_vido}
+                                ${line?.tm_ct_vt_vido || ''}
                                 </p>
                             </td>
                             <td class="s5 center-table">
-                                ${line?.tm_ct_vt_kinhdo}
+                                ${line?.tm_ct_vt_kinhdo || ''}
                             </td>
                             <td class="s5 center-table">
-                                ${line?.daban_ct_loai}
+                                ${line?.daban_ct_loai || ''}
                             </td>
                             <td class="s5 center-table">
-                                ${line?.daban_ct_khoiluong == 0 ? '' : line?.daban_ct_khoiluong}
+                                ${line?.daban_ct_khoiluong == 0 ? '' : line?.daban_ct_khoiluong || ''}
                             </td>
                             <td class="s5 center-table">
-                                ${line?.tm_ct_thuyentruong}
+                                ${line?.tm_ct_thuyentruong || ''}
                             </td>
                             
                         </tr>
@@ -743,7 +742,7 @@ Thông tin tàu thu mua/chuyển tải </p>
                             </td>
         
                             <td class="center-table s5">
-                                ${klg == 0 ? '' : klg}
+                                ${klg == 0 ? '' : klg || ''}
                             </td>
                             <td class="center-table s5">
                                 <br>

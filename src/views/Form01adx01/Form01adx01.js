@@ -24,6 +24,7 @@ import KetQuaKhaiThac from './KetQuaKhaiThac';
 import ThongTinVeHoatDongChuyenTai from './ThongTinVeHoatDongChuyenTai';
 import data0101Empty from './models/data0101Empty';
 import { PrintfPDF } from './pdfForm01/PrintfPDF';
+import { dataMau } from './pdfForm01/dataMauPDF';
 const Form01adx01 = ({route}) => {
   const {
     getDetailForm0101_Id,
@@ -39,7 +40,7 @@ const Form01adx01 = ({route}) => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [initialValue, setInitialValue] = useState('');
 
-  const {isLoading} = useContext(UserContext);
+  const {isLoading,setIsLoading} = useContext(UserContext);
   const {initialTitle, setInitialTitle} = useContext(UserContext);
 
   const netInfo = useNetInfo();
@@ -172,40 +173,19 @@ const Form01adx01 = ({route}) => {
         <TouchableOpacity
           style={[styles.actionDownload, styles.button]}
           onPress={() => {
-            let dataFix = modifyForm0101({...data0101});
-            dataFix.dairy_name = 'filemau';
-            ExportPDF(dataFix);
-            setTimeout(() => {
-              navigation.navigate('ViewPDF');
-            }, 1000);
+            let dataFix = dataMau;
+            dataFix.dairy_name = 'Mẫu NHẬT KÝ KHAI THÁC THỦY SẢN'+'_'+Math.floor(Math.random() * 100000);
+            const result= ExportPDF(dataFix);
+            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
           onPress={
             () => {
-              // if (!netInfo.isConnected) {
-              //   ToastAndroid.show(
-              //     'Vui lòng kết nối internet.',
-              //     ToastAndroid.SHORT,
-              //   );
-              //   return;
-              // }
-              setIsPDFLoading(true);
-
-              let dataFix = modifyForm0101({...data0101});
-              dataFix.dairy_name = 'filemau';
-              // ExportPDF(dataFix);
-              setIsPDFLoading(false);
-
+              let dataFix = modifyForm0102({...data0101});
               PrintfPDF(dataFix);
-
-              // setTimeout(() => {
-              //   uploadFile(
-              //     `/storage/emulated/0/Android/data/com.khanhhoiapp/files/pdf/filemau.pdf`,
-              //   );
-              // }, 3000);
             }
             //data
           }>

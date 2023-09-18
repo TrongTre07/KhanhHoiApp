@@ -20,6 +20,8 @@ import Storage from '../../utils/storage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {ExportPDF} from './pdfForm0301/ExportPDF';
 import uploadFile from '../../axios/uploadFile';
+import {PrintfPDF} from './pdfForm0301/PrintfPDF';
+import { dataMau } from './pdfForm0301/dataMauPDF';
 const Form03ad01 = ({route}) => {
   const {
     getDetailForm0301Id,
@@ -291,33 +293,18 @@ const Form03ad01 = ({route}) => {
         <TouchableOpacity
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
-            let dataFix = data0301;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExlporPDF(dataFix);
-            console.log(exportPDF);
-            if (exportPDF) navigation.navigate('ViewPDF');
-            else Alert.alert('Thất bại', `không thể xem file pdf`);
+            let dataFix = dataMau;
+            dataFix.dairyname = 'Mẫu Báo cáo khai thác thủy sản'+'_'+Math.floor(Math.random() * 100000);
+            const result= ExportPDF(dataFix);
+            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
-            if (!netInfo.isConnected) {
-              ToastAndroid.show(
-                'Vui lòng kết nối internet.',
-                ToastAndroid.SHORT,
-              );
-              return;
-            }
-            let dataFix = data0301;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            if (exportPDF == true)
-              uploadFile(
-                `/storage/emulated/0/Android/data/com.khanhhoiapp/files/pdf/filemau.pdf`,
-              );
-            else Alert.alert('Thất bại', `không thể xuất file pdf`);
+            let dataFix = modifyThongTinKhaiThac({...data0301});
+            PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

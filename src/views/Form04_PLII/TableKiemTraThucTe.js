@@ -516,7 +516,7 @@ const TableKiemTraThucTe = ({}) => {
           <TextInput
             keyboardType="numeric"
             style={[styles.inputCheckBox, styles.text]}
-            value={data04_PLII?.sothuyenvien.toString()}
+            value={data04_PLII?.sothuyenvien+''}
             onChangeText={value => {
               if (isNaN(value)) {
                 value = 0;

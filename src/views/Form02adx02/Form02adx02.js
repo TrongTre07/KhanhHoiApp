@@ -24,6 +24,8 @@ import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 import ChiTietVeSanLuongThuySan from './item/itemTongCucThuySan/ChiTietVeSanLuongThuySan';
 import XacNhanKhoiLuongThuySanConLai from './item/itemTongCucThuySan/XacNhanKhoiLuongThuySanConLai';
+import { PrintfPDF } from './pdfForm0202/PrintfPDF';
+import { dataMau } from './pdfForm0202/dataMauPDF';
 
 const Form02ad02 = ({route}) => {
   const {
@@ -194,21 +196,7 @@ const Form02ad02 = ({route}) => {
     return updatedData0202;
   };
 
-  // check ko có wifi thì update local
-  const handleUpdateDiaryLocal = async () => {
-    const dataForm = {...data0202};
-    dataForm.dairy_name = titleForm0202;
-    const result = await Storage.getItem('form02adx02');
-    if (result !== null) {
-      const data = JSON.parse(result);
-      data[id] = dataForm;
-      await Storage.setItem('form02adx02', JSON.stringify(data));
-      console.log('STORAGE:', JSON.stringify(data, null, 2));
-    }
-    ToastAndroid.show('Cập nhật thành công', ToastAndroid.SHORT);
-    // setData0202(data0202Empty);
-    setGoBackAlert(true);
-  };
+
 
   React.useEffect(() => {
     const backAction = () => {
@@ -246,33 +234,18 @@ const Form02ad02 = ({route}) => {
         <TouchableOpacity
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
-            let dataFix = data0202;
-            dataFix.dairy_name = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            console.log(exportPDF);
-            if (exportPDF) navigation.navigate('ViewPDF');
-            else Alert.alert('Thất bại', `không thể xem file pdf`);
+            let dataFix = dataMau;
+            dataFix.dairy_name = 'Mẫu Giấy biên nhận bốc dỡ qua cảng'+'_'+Math.floor(Math.random() * 100000);
+            const result= ExportPDF(dataFix);
+            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
-            if (!netInfo.isConnected) {
-              ToastAndroid.show(
-                'Vui lòng kết nối internet.',
-                ToastAndroid.SHORT,
-              );
-              return;
-            }
-            let dataFix = data0202;
-            dataFix.dairy_name = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            if (exportPDF == true)
-              uploadFile(
-                `/storage/emulated/0/Android/data/com.khanhhoiapp/files/pdf/filemau.pdf`,
-              );
-            else Alert.alert('Thất bại', `không thể xuất file pdf`);
+            let dataFix = modifyForm0202({...data0202});
+              PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

@@ -203,7 +203,7 @@ export const ExportPDF = async (data) => {
 
                 </div>
                 <br />
-                <table class="new-page" style=" 
+                <table style=" 
                                     border-collapse:collapse; height:100%; width:100%;">
                     <!-- header -->
                     <div>
@@ -212,7 +212,7 @@ export const ExportPDF = async (data) => {
                             </h1>
                             <h1 style="padding-top: 4pt; text-align: center;width: 100%;font-style: normal;
                                         font-weight: normal;">
-                                CHUYẾN SỐ: ${duLieu?.chuyenbien_so+' '||'.........'} /năm ${duLieu?.nam+''||'.......'}
+                                CHUYẾN SỐ: ${duLieu?.chuyenbien_so+''||'.........'} /năm ${duLieu?.nam+''||'.......'}
                             </h1>
                             <h1 style="padding-top: 4pt; text-align: center;width: 100%;">
                                 Từ ngày:  ${duLieu?.tungay?moment(duLieu?.tungay).format('DD/MM/YYYY'):'.........'} đến ngày: ${duLieu.denngay?moment(duLieu?.denngay).format('DD/MM/YYYY'):'.........'}

@@ -272,32 +272,32 @@ export const ExportPDF = async (data) => {
                                 <div style="margin: 16pt 16pt 0 0;">
                                     <div style="display: flex;">
                                         <div style="width: 50%;">
-                                            1. Họ và tên chủ tàu: ${duLieu?.ten_chutau||'......................................................'}
+                                            1. Họ và tên chủ tàu: ${duLieu?.ten_chutau|| '............................................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ;2. Họ và tên thuyền trưởng: ${duLieu?.ten_thuyentruong||'..........................................................'};
+                                            ;2. Họ và tên thuyền trưởng: ${duLieu?.ten_thuyentruong|| '..........................................................'};
                                         </div>
                                     </div>
         
                                     <div style="display: flex; margin-top: 8pt;">
                                         <div style="width: 33%;">
-                                            3. Số đăng ký tàu: ${duLieu?.tau_bs||'.............................'}
+                                            3. Số đăng ký tàu: ${duLieu?.tau_bs|| '.......................................'}
                                         </div>
                                         <div style="width: 33%;">
-                                            4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat||'..............'} m
+                                            4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat|| '..................'} m
                                         </div>
         
                                         <div style="width: 34%;">
-                                            ;5. Tổng công suất máy chính: ${duLieu?.tau_tongcongsuatmaychinh||'..............'} CV;
+                                            ;5. Tổng công suất máy chính: ${duLieu?.tau_tongcongsuatmaychinh|| '..............'} CV;
                                         </div>
                                     </div>
         
                                     <div style="display: flex;margin-top: 8pt;">
                                         <div style="width: 50%;">
-                                            6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so||'..........................'}
+                                            6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so|| '................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ;Thời hạn đến: ${duLieu?.gpkt_thoihan||'..........................'}
+                                            ;Thời hạn đến: ${duLieu?.gpkt_thoihan|| '................................................'}
                                         </div>
                                     </div>
                                 </div>
@@ -328,10 +328,10 @@ export const ExportPDF = async (data) => {
                                             border-bottom: 1pt solid #2B3D4F;">
                                 <div style="display: flex">
                                     <div style="width: 50%;">
-                                        10: Cảng đi: ${duLieu?.cang_di||'............................................................'}
+                                        10: Cảng đi: ${duLieu?.cang_di|| '............................................................'}
                                     </div>
                                     <div style="width: 50%;">
-                                        ; Thời gian đi: Ngày ${duLieu?.ngay_di?moment(duLieu?.ngay_di).format('LL'):'.......'} 
+                                        ; Thời gian đi: ${duLieu?.ngay_di ? moment(duLieu?.ngay_di).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'} 
                                     </div>
                                 </div>
                                 <div style="display: flex;margin-top: 4pt;">
@@ -339,15 +339,15 @@ export const ExportPDF = async (data) => {
                                         11: Cảng về: ${duLieu?.cang_ve||'............................................................'}
                                     </div>
                                     <div style="width: 50%;">
-                                        ; Thời gian cập: Ngày  ${duLieu?.ngay_ve?moment(duLieu?.ngay_ve).format('LL'):'.......'} 
+                                        ; Thời gian cập: ${duLieu?.ngay_ve ? moment(duLieu?.ngay_ve).format('[Ngày ]LL') : 'Ngày .... Tháng .... Năm ....'} 
                                     </div>
                                 </div>
                                 <div style="display: flex;margin-top: 4pt;">
                                     <div style="width: 50%;">
-                                        12: Nộp Nhật ký: Ngày ${duLieu?.ngaynop?moment(duLieu?.ngaynop).format('LL'):'.......'} 
+                                        12: Nộp Nhật ký: ${duLieu?.ngaynop ? moment(duLieu?.ngaynop).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'}
                                     </div>
                                     <div style="width: 50%;">
-                                        ; Vào Sổ số: ${duLieu?.vaoso_so||'.........................................'}
+                                        ; Vào Sổ số: ${duLieu?.vaoso_so|| '.........................................'}
                                     </div>
                                 </div>
         
@@ -453,7 +453,7 @@ export const ExportPDF = async (data) => {
                             </td>
                             <td class="center-table">
                                 <p style="width: 100%;" class="s5">
-                                    ${line?.ngaythang?moment(line?.ngaythang).format('DD-MM-YYYY'):'.......'}
+                                    ${line?.ngaythang?moment(line?.ngaythang).format('DD-MM-YYYY'):''}
                                 </p>
                             </td>
                             <td class="s5 center-table">
@@ -568,7 +568,7 @@ export const ExportPDF = async (data) => {
                                             4. Số Giấy phép khai thác thủy sản: ${item.gpkt_so||'.............................'}
                                         </div>
                                         <div style="width: 30%;">
-                                            ;Thời hạn đến: ${item.gpkt_thoihan?moment(item.gpkt_thoihan).format('DD/MM/YYYY'):'..........'}
+                                            ;Thời hạn đến: ${item.gpkt_thoihan?moment(item.gpkt_thoihan).format('DD/MM/YYYY'):'................................................'}
                                         </div>
                                         <div style="width: 30%;">
                                              ;5. Nghề khai thác: ${item.nghekt||'................................'}
@@ -580,11 +580,11 @@ export const ExportPDF = async (data) => {
                                             6. Cảng đi ${item.cang_di||'......................................................................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ;Thời gian đi: ${item.ngay_di?'Ngày '+moment(item.ngay_di).format('LL'):'.................................................................................................'}
+                                            ;Thời gian đi: ${item.ngay_di?' Ngày '+moment(item.ngay_di).format('LL'):'.................................................................................................'}
                                         </div>
                                     </div>
                                     <div style="display: flex;margin-top: 8pt;">
-                                        7. Thời gian khai thác đối với sản phẩm thu mua, chuyển tải: Từ ngày ${item.tg_khaithac_tungay?moment(item.tg_khaithac_tungay).format('DD/MM/YYYY'):'.......'} đến ngày ${item.tg_khaithac_denngay?moment(item.tg_khaithac_denngay).format('DD/MM/YYYY'):'.......'}
+                                        7. Thời gian khai thác đối với sản phẩm thu mua, chuyển tải: Từ ngày ${item.tg_khaithac_tungay?moment(item.tg_khaithac_tungay).format('DD/MM/YYYY'):'..................'} đến ngày ${item.tg_khaithac_denngay?moment(item.tg_khaithac_denngay).format('DD/MM/YYYY'):'.................'}
                                         
                                     </div>
                                 </div>
@@ -689,7 +689,7 @@ export const ExportPDF = async (data) => {
                                     ${index+1}
                                 </td>
                                 <td style="width: 7%;" class="s5 center-table">
-                                    ${line?.thoidiem_tha?moment(line?.thoidiem_tha).format('hh:mm DD-MM-YYYY'):'.......'}
+                                    ${line?.thoidiem_tha?moment(line?.thoidiem_tha).format('hh:mm DD-MM-YYYY'):''}
 
                                 </td>
                                 <td class="s5 center-table">
@@ -700,7 +700,7 @@ export const ExportPDF = async (data) => {
                                 </td>
                                 <td style="width: 7%;" class="center-table">
                                     <p style="width: 100%;" class="s5">
-                                    ${line?.thoidiem_thu?moment(line?.thoidiem_thu).format('hh:mm DD-MM-YYYY'):'.......'}
+                                    ${line?.thoidiem_thu?moment(line?.thoidiem_thu).format('hh:mm DD-MM-YYYY'):''}
                                     </p>
             
                                 </td>

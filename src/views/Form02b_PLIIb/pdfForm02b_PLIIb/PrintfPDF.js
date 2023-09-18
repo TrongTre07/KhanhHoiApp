@@ -155,36 +155,36 @@ export const PrintfPDF = async (data) => {
                     <table cellspacing="0" style="margin-top: 12pt; width:100%; height: auto; overflow-wrap: break-word;">
                         <tr>
                             <td class="s2" colspan="4">
-                                Số chứng nhận/Document number: ${duLieu?.sochungnhan}
+                                Số chứng nhận/Document number: ${duLieu?.sochungnhan||''}
                             </td>
                         </tr>
                         <tr>
                             <td class="s2" colspan="4">
-                                1. Quốc gia xuất khẩu/Country of Exportation: ${duLieu?.quocgiaxuatkhau}
+                                1. Quốc gia xuất khẩu/Country of Exportation: ${duLieu?.quocgiaxuatkhau||''}
                                 <br>
                                 <br>
-                                Cảng/sân bay/địa điểm xuất phát khác/Port/airport/other place of departure: ${duLieu?.diadiemxuatphat}
+                                Cảng/sân bay/địa điểm xuất phát khác/Port/airport/other place of departure: ${duLieu?.diadiemxuatphat||''}
             
                             </td>
                         </tr>
                         <tr>
                             <td class="s2" colspan="4">
-                                Tên tàu/nước treo cờ/Vessel name/flag: ${duLieu?.tentau}
+                                Tên tàu/nước treo cờ/Vessel name/flag: ${duLieu?.tentau||''}
                                 <br>
                                 <br>
-                                Số chuyến/số vận đơn đường biển/Voyage No./Bill of landing No: ${duLieu?.sochuyen}
+                                Số chuyến/số vận đơn đường biển/Voyage No./Bill of landing No: ${duLieu?.sochuyen||''}
                                 <br>
                                 <br>
-                                Số chuyến bay/Số vận đơn hàng không/Flight number/Airway bill number: ${duLieu?.sochuyenbay}
+                                Số chuyến bay/Số vận đơn hàng không/Flight number/Airway bill number: ${duLieu?.sochuyenbay || ''}
                                 <br>
                                 <br>
-                                Quốc tịch xe và số đăng ký/Truck nationality and registration number: ${duLieu?.quoctichxevasodangky}
+                                Quốc tịch xe và số đăng ký/Truck nationality and registration number: ${duLieu?.quoctichxevasodangky||''}
                                 <br>
                                 <br>
-                                Số vận đơn đơn đường sắt/Railway bill number: ${duLieu?.sovanndonduongsat}
+                                Số vận đơn đơn đường sắt/Railway bill number: ${duLieu?.sovanndonduongsat||''}
                                 <br>
                                 <br>
-                                Các giấy tờ vận tải khác/Other transport documents: ${duLieu?.giaytovantaikhac}
+                                Các giấy tờ vận tải khác/Other transport documents: ${duLieu?.giaytovantaikhac||''}
             
                             </td>
                         </tr>
@@ -207,7 +207,7 @@ export const PrintfPDF = async (data) => {
                                 <br>
                                 Name of Exporter
                                 <br>
-                                ${duLieu?.tennhaxuatkhau}
+                                ${duLieu?.tennhaxuatkhau||''}
                                 <br>
                                 <br>
             
@@ -217,7 +217,7 @@ export const PrintfPDF = async (data) => {
                                 <br>
                                 Address
                                 <br>
-                                ${duLieu?.diachi}
+                                ${duLieu?.diachi||''}
                                 <br>
                                 <br>
             

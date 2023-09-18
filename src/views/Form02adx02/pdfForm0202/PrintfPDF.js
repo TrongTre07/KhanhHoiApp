@@ -197,11 +197,11 @@ export const PrintfPDF = async (data) => {
                                 <div style="margin: 0 20pt 0 20pt;">
                                     <div style="display: flex; margin-top: 8pt;height: 13pt;">
                                         Tên cảng cá:
-                                        ${duLieu?.tencangca||'................................................................................................................'}
+                                        ${duLieu?.tencangca||'..............................................................................................................................................................'}
                                     </div>
                                     <div style="display: flex; margin-top: 8pt;">
                                         Địa chỉ:
-                                        ${duLieu?.diachi||'....................................................................................................................'};
+                                        ${duLieu?.diachi||'.....................................................................................................................................................................'}
                                     </div>
                                 </div>
                             </div>
@@ -218,21 +218,21 @@ export const PrintfPDF = async (data) => {
                                     </div>
                                     <div style="display: flex; margin-top: 8pt;">
                                         2. Số đăng ký tàu:
-                                        ${duLieu?.biensotau||'....................................................................................................................'};
+                                        ${duLieu?.biensotau||'..................................................................................................................................................'}
                                     </div>
                                     <div style="display: flex; margin-top: 8pt;">
                                         <div style="width: 60%;">
-                                            3. Giấy phép khai thác thủy sản số: ${duLieu?.giayphepkhaithac||'.............................'}
+                                            3. Giấy phép khai thác thủy sản số: ${duLieu?.giayphepkhaithac||'........................................'}
                                         </div>
                                         <div style="width: 40%;">
-                                            ; Thời hạn đến: ${duLieu?.thoihan_gpkt?moment(duLieu.thoihan_gpkt).format('DD-MM-YYYY'):'..............'};
+                                            ; Thời hạn đến: ${duLieu?.thoihan_gpkt?moment(duLieu.thoihan_gpkt).format('DD-MM-YYYY'):'..........................'};
                                         </div>
                                     </div>
                                     <div style="display: flex; margin-top: 8pt;">
                                         4. Ngày: ${duLieu?.ngaybochang?moment(duLieu.ngaybochang).format('DD-MM-YYYY') :'..............'} đã bốc dỡ qua cảng
                                     </div>
                                     <div style="display: flex; margin-top: 8pt;">
-                                        5: Tổng sản lượng thủy sản bốc dỡ: ${totalByType+''||'..............'} kg
+                                        5: Tổng sản lượng thủy sản bốc dỡ: ${totalByType!=0?totalByType+'':'...................'} kg
                                     </div>
                                 </div>
                             </div>
@@ -292,7 +292,7 @@ export const PrintfPDF = async (data) => {
                                     </div>
                                     <div style="display: flex; margin-top: 8pt;">
                                         7. Hình thức bán sản phẩm (Toàn bộ/một phần/theo loài):
-                                        ${duLieu?.hinhthucbansp||'..................................................................'};
+                                        ${duLieu?.hinhthucbansp||'...........................................................................'}
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +330,7 @@ export const PrintfPDF = async (data) => {
                                 thủy sản trong Giấy biên nhận thủy sản bốc dỡ qua cảng)
                             </div>
                             <div class="s2" style="margin: 8pt 16pt 0 16pt; ">
-                                .........., ngày ${duLieu?.xacnhan?.ngaylap?moment(duLieu.xacnhan.ngaylap).format('LL'):'..... tháng ..... năm .....'}; Cảng cá: ${duLieu?.xacnhan?.cangca||'........'} xác nhận khối lượng thủy sản còn lại trong
+                                ............, ngày ${duLieu?.xacnhan?.ngaylap?moment(duLieu.xacnhan.ngaylap).format('LL'):'..... tháng ..... năm .....'}; Cảng cá: ${duLieu?.xacnhan?.cangca||'.......................'} xác nhận khối lượng thủy sản còn lại trong
                                 Giấy biên nhận thủy sản bốc dỡ qua cảng sau khi cấp Giấy xác nhận nguyên
                                 liệu thủy sản khai thác số: ${duLieu?.xacnhan?.soxacnhannguyenlieukhaithac}
             

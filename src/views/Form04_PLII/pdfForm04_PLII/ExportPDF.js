@@ -219,14 +219,14 @@ export const ExportPDF = async (data) => {
                             <div style="margin: 16pt 20pt 0 20pt;">
                             <div class="s2" style="display: flex; margin-top: 8pt;">
                             <div style="display: flex; margin-top: 8pt;">
-                                <label style="white-space: nowrap;">Tên cảng cá: ${duLieu?.tencangca || '........................'}</label>
-                                <label style="white-space: nowrap;">; Địa chỉ: ${duLieu?.diachi || '...............................................................................'}<label>
+                                <label style="white-space: nowrap;">Tên cảng cá: ${duLieu?.tencangca || '.....................................'}</label>
+                                <label style="white-space: nowrap;">; Địa chỉ: ${duLieu?.diachi || '...........................................................................................'}<label>
                             </div>
                         </div>
                         
                                 <div style="display: flex; margin-top: 8pt; margin-bottom: 15pt;">
                                     Thời gian:
-                                    ${duLieu?.thoigiankt?moment(duLieu?.thoigiankt).format('hh [giờ] mm [phút,] [ngày] DD/MM/YYYY'): '....................................................................................................................'};
+                                    ${duLieu?.thoigiankt?moment(duLieu?.thoigiankt).format('hh [giờ] mm [phút,] [ngày] DD/MM/YYYY'): '.....................................................................................................................................................'}
                                 </div>
                             </div>
                         </div>
@@ -420,35 +420,39 @@ export const ExportPDF = async (data) => {
                             <tr>
                                 <td class="s5 center-table" style="width: 22%;">Trang thiết bị hàng hải</td>
                                 <td class="s5 center-table" style="width: 8%;">
-                                    ${duLieu?.tbhanghai?'Đ':'T'}
+                                    ${duLieu?.tbhanghai==undefined?'':duLieu?.tbhanghai==true?'Đ':'T'}
+
                                 </td>
                                 <td class="s5 center-table" style="width: 20%;">
-                                    ${duLieu?.tbhanghai_diengiai}
+                                    ${duLieu?.tbhanghai_diengiai||''}
                                 </td>
 
                                 <td class="s5 center-table" style="width: 22%;">Cứu sinh, cứu hỏa</td>
                                 <td class="s5 center-table" style="width: 8%;">
-                                    ${duLieu?.cuusinhcuuhoa?'Đ':'T'}
+                                    ${duLieu?.cuusinhcuuhoa==undefined?'':duLieu?.cuusinhcuuhoa==true?'Đ':'T'}
+
                                 </td>
                                 <td class="s5 center-table" style="width: 20%;">
-                                    ${duLieu?.cuusinhcuuhoa_diengiai}
+                                    ${duLieu?.cuusinhcuuhoa_diengiai||''}
                                 </td>
                             </tr>
                             <tr>
                                 <td class="s5 center-table" style="width: 22%;">Thông tin liên lạc, tín hiệu</td>
                                 <td class="s5 center-table" style="width: 8%;">
-                                    ${duLieu?.ttlienlac?'Đ':'T'}
+                                    ${duLieu?.ttlienlac==undefined?'':duLieu?.ttlienlac==true?'Đ':'T'}
+
                                 </td>
                                 <td class="s5 center-table" style="width: 20%;">
-                                    ${duLieu?.ttlienlac_diengiai}
+                                    ${duLieu?.ttlienlac_diengiai||''}
                                 </td>
 
                                 <td class="s5 center-table" style="width: 22%;">Giám sát hành trình</td>
                                 <td class="s5 center-table" style="width: 8%;">
-                                    ${duLieu?.gsht?'Đ':'T'}
+                                    ${duLieu?.gsht==undefined?'':duLieu?.gsht==true?'Đ':'T'}
+
                                 </td>
                                 <td class="s5 center-table" style="width: 20%;">
-                                    ${duLieu?.gsht_diengiai}
+                                    ${duLieu?.gsht_diengiai||''}
                                 </td>
                             </tr>
                         </table>

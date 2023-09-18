@@ -23,6 +23,8 @@ import {useNavigation} from '@react-navigation/native';
 import HeaderForm04_PL2 from './HeaderForm04_PL2';
 import TongCucThuySanView from './TongCucThuySanForm04_PL2';
 import TableForm04PL2 from './TableForm04PL2';
+import {PrintfPDF} from './pdfForm04_PLII/PrintfPDF';
+import { dataMau } from './pdfForm04_PLII/dataMauPDF';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -189,33 +191,18 @@ const Form04_PLII = ({route}) => {
         <TouchableOpacity
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
-            let dataFix = data04_PLII;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            console.log(exportPDF);
-            if (exportPDF) navigation.navigate('ViewPDF');
-            else Alert.alert('Thất bại', `không thể xem file pdf`);
+            let dataFix = dataMau;
+            dataFix.dairyname = 'Mẫu Biên bản kiểm tra tàu cá rời cảng'+'_'+Math.floor(Math.random() * 100000);
+            const result= ExportPDF(dataFix);
+            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
-            if (!netInfo.isConnected) {
-              ToastAndroid.show(
-                'Vui lòng kết nối internet.',
-                ToastAndroid.SHORT,
-              );
-              return;
-            }
-            let dataFix = data04_PLII;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            if (exportPDF == true)
-              uploadFile(
-                `/storage/emulated/0/Android/data/com.khanhhoiapp/files/pdf/filemau.pdf`,
-              );
-            else Alert.alert('Thất bại', `không thể xuất file pdf`);
+            let dataFix = {...data04_PLII};
+            PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

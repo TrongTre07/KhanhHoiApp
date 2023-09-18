@@ -225,7 +225,7 @@ export const ExportPDF = async (data) => {
                                         3. Giấy phép khai thác thủy sản số: ${duLieu?.giayphepkhaithac||'........................................'}
                                     </div>
                                     <div style="width: 40%;">
-                                        ; Thời hạn đến: ${duLieu?.thoihan_gpkt?moment(duLieu.thoihan_gpkt).format('DD-MM-YYYY'):'..............'};
+                                        ; Thời hạn đến: ${duLieu?.thoihan_gpkt?moment(duLieu.thoihan_gpkt).format('DD-MM-YYYY'):'..........................'};
                                     </div>
                                 </div>
                                 <div style="display: flex; margin-top: 8pt;">
@@ -292,7 +292,7 @@ export const ExportPDF = async (data) => {
                                 </div>
                                 <div style="display: flex; margin-top: 8pt;">
                                     7. Hình thức bán sản phẩm (Toàn bộ/một phần/theo loài):
-                                    ${duLieu?.hinhthucbansp||'..................................................................'};
+                                    ${duLieu?.hinhthucbansp||'...........................................................................'}
                                 </div>
                             </div>
                         </div>

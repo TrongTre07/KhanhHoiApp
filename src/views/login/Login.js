@@ -16,7 +16,7 @@ import CheckBox from '@react-native-community/checkbox';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const {login, isLoggedIn} = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [isSavePassword, setSavePassword] = useState(false);

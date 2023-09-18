@@ -36,7 +36,7 @@ export const ExportPDF = async (data) => {
                     font-style: normal;
                     font-weight: bold;
                     text-decoration: none;
-                    font-size: 13pt;
+                    font-size: 12pt;
                     vertical-align: 11pt;
                 }
         
@@ -47,7 +47,7 @@ export const ExportPDF = async (data) => {
                     font-style: normal;
                     font-weight: bold;
                     text-decoration: none;
-                    font-size: 11pt;
+                    font-size: 10pt;
                 }
         
                 .s1 {
@@ -56,7 +56,7 @@ export const ExportPDF = async (data) => {
                     font-style: normal;
                     font-weight: bold;
                     text-decoration: none;
-                    font-size: 11pt;
+                    font-size: 10pt;
                 }
         
                 .s2 {
@@ -64,7 +64,7 @@ export const ExportPDF = async (data) => {
                     font-family: "Times New Roman", serif;
                     font-style: normal;
                     font-weight: normal;
-                    font-size: 11pt;
+                    font-size: 10pt;
                 }
         
                 .s3 {
@@ -73,7 +73,7 @@ export const ExportPDF = async (data) => {
                     font-style: italic;
                     font-weight: normal;
                     text-decoration: none;
-                    font-size: 11pt;
+                    font-size: 10pt;
                 }
         
                 .s4 {
@@ -92,7 +92,7 @@ export const ExportPDF = async (data) => {
                     font-style: normal;
                     font-weight: normal;
                     text-decoration: none;
-                    font-size: 11pt;
+                    font-size: 10pt;
                     word-wrap: break-word;
                 }
         
@@ -102,7 +102,7 @@ export const ExportPDF = async (data) => {
                     font-style: italic;
                     font-weight: normal;
                     text-decoration: none;
-                    font-size: 11pt;
+                    font-size: 10pt;
                 }
         
                 table,
@@ -180,7 +180,7 @@ export const ExportPDF = async (data) => {
         
         <body>
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 20pt;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12pt;">
                     <h1 style="margin: 0;">
                         Số 21 /2018/TT-BNNPTNT
                     </h1>

@@ -272,32 +272,32 @@ export const PrintfPDF = async (data) => {
                                     <div style="margin: 16pt 16pt 0 0;">
                                         <div style="display: flex;">
                                             <div style="width: 50%;">
-                                                1. Họ và tên chủ tàu: ${duLieu?.ten_chutau||'......................................................'}
+                                                1. Họ và tên chủ tàu: ${duLieu?.ten_chutau|| '............................................................................'}
                                             </div>
                                             <div style="width: 50%;">
-                                                ;2. Họ và tên thuyền trưởng: ${duLieu?.ten_thuyentruong||'..........................................................'};
+                                                ;2. Họ và tên thuyền trưởng: ${duLieu?.ten_thuyentruong|| '..........................................................'};
                                             </div>
                                         </div>
             
                                         <div style="display: flex; margin-top: 8pt;">
                                             <div style="width: 33%;">
-                                                3. Số đăng ký tàu: ${duLieu?.tau_bs||'.............................'}
+                                                3. Số đăng ký tàu: ${duLieu?.tau_bs|| '.......................................'}
                                             </div>
                                             <div style="width: 33%;">
-                                                4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat||'..............'} m
+                                                4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat|| '..................'} m
                                             </div>
             
                                             <div style="width: 34%;">
-                                                ;5. Tổng công suất máy chính: ${duLieu?.tau_tongcongsuatmaychinh||'..............'} CV;
+                                                ;5. Tổng công suất máy chính: ${duLieu?.tau_tongcongsuatmaychinh|| '..............'} CV;
                                             </div>
                                         </div>
             
                                         <div style="display: flex;margin-top: 8pt;">
                                             <div style="width: 50%;">
-                                                6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so||'..........................'}
+                                                6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so|| '................................................'}
                                             </div>
                                             <div style="width: 50%;">
-                                                ;Thời hạn đến: ${duLieu?.gpkt_thoihan||'..........................'}
+                                                ;Thời hạn đến: ${duLieu?.gpkt_thoihan|| '................................................'}
                                             </div>
                                         </div>
                                     </div>
@@ -328,10 +328,10 @@ export const PrintfPDF = async (data) => {
                                                 border-bottom: 1pt solid #2B3D4F;">
                                     <div style="display: flex">
                                         <div style="width: 50%;">
-                                            10: Cảng đi: ${duLieu?.cang_di||'............................................................'}
+                                            10: Cảng đi: ${duLieu?.cang_di|| '............................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ; Thời gian đi: Ngày ${duLieu?.ngay_di?moment(duLieu?.ngay_di).format('LL'):'.......'} 
+                                            ; Thời gian đi: ${duLieu?.ngay_di ? moment(duLieu?.ngay_di).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'} 
                                         </div>
                                     </div>
                                     <div style="display: flex;margin-top: 4pt;">
@@ -339,15 +339,15 @@ export const PrintfPDF = async (data) => {
                                             11: Cảng về: ${duLieu?.cang_ve||'............................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ; Thời gian cập: Ngày  ${duLieu?.ngay_ve?moment(duLieu?.ngay_ve).format('LL'):'.......'} 
+                                            ; Thời gian cập: ${duLieu?.ngay_ve ? moment(duLieu?.ngay_ve).format('[Ngày ]LL') : 'Ngày .... Tháng .... Năm ....'} 
                                         </div>
                                     </div>
                                     <div style="display: flex;margin-top: 4pt;">
                                         <div style="width: 50%;">
-                                            12: Nộp Nhật ký: Ngày ${duLieu?.ngaynop?moment(duLieu?.ngaynop).format('LL'):'.......'} 
+                                            12: Nộp Nhật ký: ${duLieu?.ngaynop ? moment(duLieu?.ngaynop).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ; Vào Sổ số: ${duLieu?.vaoso_so||'.........................................'}
+                                            ; Vào Sổ số: ${duLieu?.vaoso_so|| '.........................................'}
                                         </div>
                                     </div>
             
@@ -410,34 +410,34 @@ export const PrintfPDF = async (data) => {
                                 </td>
             
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                    Loài
+                                    Loài<br>
                                     ${duLieu?.thumua[0]?.loai_1}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
             
-                                    Loài
+                                    Loài<br>
                                     ${duLieu?.thumua[0]?.loai_2}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                    Loài
+                                    Loài<br>
                                     ${duLieu?.thumua[0]?.loai_3}
             
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                    Loài
+                                    Loài<br>
                                     ${duLieu?.thumua[0]?.loai_4}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                    Loài
+                                    Loài <br>
                                     ${duLieu?.thumua[0]?.loai_5}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                    Loài
+                                    Loài<br>
                                     ${duLieu?.thumua[0]?.loai_6}
                                 </td>
             
@@ -453,7 +453,7 @@ export const PrintfPDF = async (data) => {
                                 </td>
                                 <td class="center-table">
                                     <p style="width: 100%;" class="s5">
-                                        ${line?.ngaythang?moment(line?.ngaythang).format('DD-MM-YYYY'):'.......'}
+                                        ${line?.ngaythang?moment(line?.ngaythang).format('DD-MM-YYYY'):''}
                                     </p>
                                 </td>
                                 <td class="s5 center-table">
@@ -481,37 +481,37 @@ export const PrintfPDF = async (data) => {
                                     ${line?.loai_6_kl}
                                 </td>
                                 <td class="s5 center-table">
-                                    ${line?.tongsanluong||0}
+                                    ${line?.tongsanluong}
                                 </td>
                             </tr>
                             `).join('')}
-
+    
                             <tr>
                                 <td class="s5 center-table" colspan="5">
                                     Tổng khối lượng
                                 </td>
             
                                 <td class="center-table s5">
-                                    ${totalByType[0]}
+                                    ${totalByType[0]==0?'':totalByType[0]}
                                 </td>
                                 <td class="center-table s5">
-                                    ${totalByType[1]}
+                                    ${totalByType[1]==0?'':totalByType[1]}
                                 </td>
                                 <td class="center-table s5">
-                                    ${totalByType[2]}
+                                    ${totalByType[2]==0?'':totalByType[2]}
                                 </td>
                                 <td class="center-table s5">
-                                    ${totalByType[3]}
+                                    ${totalByType[3]==0?'':totalByType[3]}
                                 </td>
                                 <td class="center-table s5">
-                                    ${totalByType[4]}
+                                    ${totalByType[4]==0?'':totalByType[4]}
                                 </td>
                                 <td class="center-table s5">
-                                    ${totalByType[5]}
+                                    ${totalByType[5]==0?'':totalByType[5]}
                                 </td>
                                 </td>
                                 <td class="center-table s5">
-                                    ${totalByType[0]+totalByType[1]+totalByType[2]+totalByType[3]+totalByType[4]+totalByType[5]}
+                                    ${totalByType[0]+totalByType[1]+totalByType[2]+totalByType[3]+totalByType[4]+totalByType[5]==0?'':totalByType[0]+totalByType[1]+totalByType[2]+totalByType[3]+totalByType[4]+totalByType[5]}
                                 </td>
                             </tr>
                         </table>
@@ -568,7 +568,7 @@ export const PrintfPDF = async (data) => {
                                                 4. Số Giấy phép khai thác thủy sản: ${item.gpkt_so||'.............................'}
                                             </div>
                                             <div style="width: 30%;">
-                                                ;Thời hạn đến: ${item.gpkt_thoihan?moment(item.gpkt_thoihan).format('DD/MM/YYYY'):'..........'}
+                                                ;Thời hạn đến: ${item.gpkt_thoihan?moment(item.gpkt_thoihan).format('DD/MM/YYYY'):'................................................'}
                                             </div>
                                             <div style="width: 30%;">
                                                  ;5. Nghề khai thác: ${item.nghekt||'................................'}
@@ -580,11 +580,11 @@ export const PrintfPDF = async (data) => {
                                                 6. Cảng đi ${item.cang_di||'......................................................................................................'}
                                             </div>
                                             <div style="width: 50%;">
-                                                ;Thời gian đi: ${item.ngay_di?'Ngày '+moment(item.ngay_di).format('LL'):'.................................................................................................'}
+                                                ;Thời gian đi: ${item.ngay_di?' Ngày '+moment(item.ngay_di).format('LL'):'.................................................................................................'}
                                             </div>
                                         </div>
                                         <div style="display: flex;margin-top: 8pt;">
-                                            7. Thời gian khai thác đối với sản phẩm thu mua, chuyển tải: Từ ngày ${item.tg_khaithac_tungay?moment(item.tg_khaithac_tungay).format('DD/MM/YYYY'):'.......'} đến ngày ${item.tg_khaithac_denngay?moment(item.tg_khaithac_denngay).format('DD/MM/YYYY'):'.......'}
+                                            7. Thời gian khai thác đối với sản phẩm thu mua, chuyển tải: Từ ngày ${item.tg_khaithac_tungay?moment(item.tg_khaithac_tungay).format('DD/MM/YYYY'):'..................'} đến ngày ${item.tg_khaithac_denngay?moment(item.tg_khaithac_denngay).format('DD/MM/YYYY'):'.................'}
                                             
                                         </div>
                                     </div>
@@ -650,34 +650,34 @@ export const PrintfPDF = async (data) => {
                                         Kinh độ
                                     </td>
                                     <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                        Loài
+                                        Loài<br>
                                         ${item.thongtinhoatdong[0]?.loai_1}
                 
                                     </td>
                                     <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                 
-                                        Loài
+                                        Loài<br>
                                         ${item.thongtinhoatdong[0]?.loai_2}
                 
                                     </td>
                                     <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                        Loài
+                                        Loài<br>
                                         ${item.thongtinhoatdong[0]?.loai_3}
                 
                 
                                     </td>
                                     <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                        Loài
+                                        Loài<br>
                                         ${item.thongtinhoatdong[0]?.loai_4}
                 
                                     </td>
                                     <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                        Loài
+                                        Loài<br>
                                         ${item.thongtinhoatdong[0]?.loai_5}
                 
                                     </td>
                                     <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
-                                        Loài
+                                        Loài<br>
                                         ${item.thongtinhoatdong[0]?.loai_6}
                                     </td>
                 
@@ -689,8 +689,8 @@ export const PrintfPDF = async (data) => {
                                         ${index+1}
                                     </td>
                                     <td style="width: 7%;" class="s5 center-table">
-                                        ${line?.thoidiem_tha?moment(line?.thoidiem_tha).format('hh:mm DD-MM-YYYY'):'.......'}
-
+                                        ${line?.thoidiem_tha?moment(line?.thoidiem_tha).format('hh:mm DD-MM-YYYY'):''}
+    
                                     </td>
                                     <td class="s5 center-table">
                                         ${line?.vido_tha}
@@ -700,7 +700,7 @@ export const PrintfPDF = async (data) => {
                                     </td>
                                     <td style="width: 7%;" class="center-table">
                                         <p style="width: 100%;" class="s5">
-                                        ${line?.thoidiem_thu?moment(line?.thoidiem_thu).format('hh:mm DD-MM-YYYY'):'.......'}
+                                        ${line?.thoidiem_thu?moment(line?.thoidiem_thu).format('hh:mm DD-MM-YYYY'):''}
                                         </p>
                 
                                     </td>
@@ -741,27 +741,27 @@ export const PrintfPDF = async (data) => {
                                     </td>
                 
                                     <td class="center-table s5">
-                                        ${bigdatatotal[index][0]}
+                                        ${bigdatatotal[index][0]==0?'':bigdatatotal[index][0]}
                                     </td>
                                     <td class="center-table s5">
-                                        ${bigdatatotal[index][1]}
+                                        ${bigdatatotal[index][1]==0?'':bigdatatotal[index][1]}
                                     </td>
                                     <td class="center-table s5">
-                                        ${bigdatatotal[index][2]}
+                                        ${bigdatatotal[index][2]==0?'':bigdatatotal[index][2]}
                                     </td>
                                     <td class="center-table s5">
-                                        ${bigdatatotal[index][3]}
+                                        ${bigdatatotal[index][3]==0?'':bigdatatotal[index][3]}
                                     </td>
                                     <td class="center-table s5">
-                                        ${bigdatatotal[index][4]}
+                                        ${bigdatatotal[index][4]==0?'':bigdatatotal[index][4]}
                                     </td>
                                     <td class="center-table s5">
-                                        ${bigdatatotal[index][5]}
+                                        ${bigdatatotal[index][5]==0?'':bigdatatotal[index][5]}
                                     </td>
                                     </td>
                                     <td class="center-table s5">
                                     
-                                        ${bigdatatotal[index][0]+bigdatatotal[index][1]+bigdatatotal[index][2]+bigdatatotal[index][3]+bigdatatotal[index][4]+bigdatatotal[index][5]}
+                                        ${(bigdatatotal[index][0]+bigdatatotal[index][1]+bigdatatotal[index][2]+bigdatatotal[index][3]+bigdatatotal[index][4]+bigdatatotal[index][5])==0?'':(bigdatatotal[index][0]+bigdatatotal[index][1]+bigdatatotal[index][2]+bigdatatotal[index][3]+bigdatatotal[index][4]+bigdatatotal[index][5])}
                                     </td>
                                 </tr>
                             </table>

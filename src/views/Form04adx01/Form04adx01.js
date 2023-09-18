@@ -20,7 +20,8 @@ import data0401Empty from './models/data0401';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
-
+import { dataMau } from './pdfForm0401/dataMauPDF';
+import { PrintfPDF } from './pdfForm0401/PrintfPDF';
 const Form04ad01 = ({route}) => {
   const {
     getDetailForm0401Id,
@@ -255,33 +256,18 @@ const Form04ad01 = ({route}) => {
         <TouchableOpacity
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
-            let dataFix = data0401;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExlporPDF(dataFix);
-            console.log(exportPDF);
-            if (exportPDF) navigation.navigate('ViewPDF');
-            else Alert.alert('Thất bại', `không thể xem file pdf`);
+            let dataFix = dataMau;
+            dataFix.dairyname = 'MẪU BÁO CÁO THĂM DÒ, TÌM KIẾM, DẪN DỤ NGUỒN LỢI THỦY SẢN'+'_'+Math.floor(Math.random() * 100000);
+            const result= ExportPDF(dataFix);
+            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
-            if (!netInfo.isConnected) {
-              ToastAndroid.show(
-                'Vui lòng kết nối internet.',
-                ToastAndroid.SHORT,
-              );
-              return;
-            }
-            let dataFix = data0401;
-            dataFix.dairyname = 'filemau';
-            const exportPDF = await ExportPDF(dataFix);
-            if (exportPDF == true)
-              uploadFile(
-                `/storage/emulated/0/Android/data/com.khanhhoiapp/files/pdf/filemau.pdf`,
-              );
-            else Alert.alert('Thất bại', `không thể xuất file pdf`);
+            let dataFix = {...data0401};
+            PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
