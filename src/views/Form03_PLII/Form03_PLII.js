@@ -26,6 +26,7 @@ import TableForm03PL2 from './TableForm03PL2';
 import KiemTraSanLuongKhaiThac from './KiemTraSanLuongKhaiThac';
 import {dataMau} from './pdfForm03_PLII/dataMauPDF';
 import {PrintfPDF} from './pdfForm03_PLII/PrintfPDF';
+import makeid from '../others/makeid';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -153,7 +154,7 @@ const Form03_PLII = ({route}) => {
       const data = JSON.parse(result);
       if (data.length > 0) {
         console.log(JSON.stringify(data[i], null, 2));
-        setData03_PLII(data[id]);
+        setData03_PLII(modifyForm03_PL2Local(data[id]));
       }
     }
   };
@@ -167,19 +168,22 @@ const Form03_PLII = ({route}) => {
       }
       return item;
     });
+    // Update data0202 with the modified thumua and thongtintaudc_thumua arrays
+    const updatedData0202 = {
+      ...data03_PLII,
+      tbldairy_0203_ls: modifiedThumua,
+    };
 
-    // Modify thongtintaudc_thumua array
-    // const modifiedThongTinTauDCThumua = data03_PLII.tbldairy_0203_ls.map(
-    //   item => {
-    //     if (!item.hasOwnProperty('isdelete')) {
-    //       // Item has isdelete field with a value of 1, update id to 0
-    //       item = {...item, id: 0};
-    //     }
+    console.log('MODIFY:', JSON.stringify(updatedData0202, null, 2));
 
-    //     return item;
-    //   },
-    // );
-
+    return updatedData0202;
+  };
+  const modifyForm03_PL2Local = data03_PLII => {
+    // Modify thumua array
+    const modifiedThumua = data03_PLII.tbldairy_0203_ls.map(item => {
+      // Item has isdelete field with a value of 1, update id to 0
+      return {...item, id: makeid(7)};
+    });
     // Update data0202 with the modified thumua and thongtintaudc_thumua arrays
     const updatedData0202 = {
       ...data03_PLII,

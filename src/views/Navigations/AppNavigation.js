@@ -52,7 +52,7 @@ const MainNavigation = () => {
 
         while (retryCount < 3 && !success) {
           const result = await funtionUpload(item);
-          console.log('result ...', result);
+          // console.log('result ...', result);
 
           if (result) {
             success = true; // Tải lên thành công, thoát khỏi vòng lặp

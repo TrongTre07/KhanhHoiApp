@@ -289,16 +289,7 @@ const UserProvider = ({children}) => {
 
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       setInitialTitle('');
       console.log('POST ERROR: ', error);
       return false;
@@ -418,16 +409,7 @@ const UserProvider = ({children}) => {
 
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -548,16 +530,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -679,16 +652,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -810,16 +774,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -942,16 +897,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -1073,17 +1019,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
-      console.log('POST ERROR: ', error);
+      } 
       setInitialTitle('');
 
       return false;
@@ -1209,16 +1145,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -1281,6 +1208,7 @@ const UserProvider = ({children}) => {
       if (error.response.status === 401) {
         getAlert401();
       }
+      return false; 
     }
   };
 
@@ -1346,16 +1274,7 @@ const UserProvider = ({children}) => {
       setIsLoading(false);
       if (error.response.status === 401) {
         getAlert401();
-      } else
-        Alert.alert('Lỗi', 'vui lòng vào ứng dụng lại!', [
-          {
-            text: 'OK',
-            onPress: () => {
-              RNRestart.restart();
-              // ;
-            },
-          },
-        ]);
+      } 
       console.log('POST ERROR: ', error);
       setInitialTitle('');
 
@@ -1405,16 +1324,21 @@ const UserProvider = ({children}) => {
   //end
 
   //check token
+  let is401ErrorDisplayed = false;
   const getAlert401 = () => {
-    Alert.alert('Đã hết phiên đăng nhập!', 'Vui lòng đăng nhập lại', [
-      {
-        text: 'ok',
-        onPress: () => {
-          setIsLoggedIn(false);
-          Storage.removeItem('token');
+    if (!is401ErrorDisplayed) { // Kiểm tra nếu lỗi 401 chưa được hiển thị
+      is401ErrorDisplayed = true; // Đánh dấu rằng lỗi đã được hiển thị
+      Alert.alert('Đã hết phiên đăng nhập!', 'Vui lòng đăng nhập lại', [
+        {
+          text: 'ok',
+          onPress: () => {
+            setIsLoggedIn(false);
+            Storage.removeItem('token');
+            is401ErrorDisplayed = false; // Đặt lại biến flag khi người dùng đã xử lý lỗi
+          },
         },
-      },
-    ]);
+      ]);
+    }
   };
 
   const contextValues = useMemo(

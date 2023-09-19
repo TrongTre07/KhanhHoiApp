@@ -23,7 +23,8 @@ import {useNavigation} from '@react-navigation/native';
 import TableForm04_PL2_03 from './TableForm04_PL3_03';
 import HeaderForm04_PL2_03 from './HeaderForm04_PL3_03';
 import {PrintfPDF} from './pdfForm04_PLIII_03/PrintfPDF';
-import { dataMau } from './pdfForm04_PLIII_03/dataMauPDF';
+import {dataMau} from './pdfForm04_PLIII_03/dataMauPDF';
+import makeid from '../others/makeid';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -139,7 +140,7 @@ const Form04_PLIII_03 = ({route}) => {
       if (netInfo.isConnected) getDetailForm04_PLIII_03_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle('');
       setData04_PLIII_03(data04_PLIII_03Empty);
     }
   }, [netInfo, id, setData04_PLIII_03]);
@@ -151,7 +152,7 @@ const Form04_PLIII_03 = ({route}) => {
       const data = JSON.parse(result);
       if (data.length > 0) {
         console.log(JSON.stringify(data[i], null, 2));
-        setData04_PLIII_03(data[id]);
+        setData04_PLIII_03(modifyForm04_PL3_03Local(data[id]));
       }
     }
   };
@@ -164,6 +165,23 @@ const Form04_PLIII_03 = ({route}) => {
         return {...item, id: 0};
       }
       return item;
+    });
+
+    // Update data0202 with the modified thumua and thongtintaudc_thumua arrays
+    const updatedData04_PL3_03 = {
+      ...data04_PLIII_03,
+      tbl_xacnhancamket_ls: modifiedThumua,
+    };
+
+    console.log('MODIFY:', JSON.stringify(updatedData04_PL3_03, null, 2));
+
+    return updatedData04_PL3_03;
+  };
+  const modifyForm04_PL3_03Local = data04_PLIII_03 => {
+    // Modify thumua array
+    const modifiedThumua = data04_PLIII_03.tbl_xacnhancamket_ls.map(item => {
+      // Item has isdelete field with a value of 1, update id to 0
+      return {...item, id: makeid(7)};
     });
 
     // Update data0202 with the modified thumua and thongtintaudc_thumua arrays
@@ -199,9 +217,12 @@ const Form04_PLIII_03 = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
             let dataFix = dataMau;
-            dataFix.dairyname = 'Mẫu Xác nhận cam kết sản phẩm thủy sản xuất khẩu có nguồn gốc từ thủy sản khai thác nhập khẩu'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairyname =
+              'Mẫu Xác nhận cam kết sản phẩm thủy sản xuất khẩu có nguồn gốc từ thủy sản khai thác nhập khẩu' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>

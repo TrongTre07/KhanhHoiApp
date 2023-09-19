@@ -21,7 +21,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import {ExportPDF} from './pdfForm0301/ExportPDF';
 import uploadFile from '../../axios/uploadFile';
 import {PrintfPDF} from './pdfForm0301/PrintfPDF';
-import { dataMau } from './pdfForm0301/dataMauPDF';
+import {dataMau} from './pdfForm0301/dataMauPDF';
+import makeid from '../others/makeid';
 const Form03ad01 = ({route}) => {
   const {
     getDetailForm0301Id,
@@ -169,7 +170,7 @@ const Form03ad01 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0301Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle('');
       setData0301(data0301Empty);
     }
   }, [netInfo, id, setData0301]);
@@ -181,7 +182,7 @@ const Form03ad01 = ({route}) => {
       const data = JSON.parse(result);
       if (data.length > 0) {
         console.log(JSON.stringify(data[i], null, 2));
-        setData0301(data[id]);
+        setData0301(modifyThongTinKhaiThacLocal(data[id]));
       }
     }
   };
@@ -230,11 +231,51 @@ const Form03ad01 = ({route}) => {
       },
     );
 
-    // Update data0201 with the modified thumua and thongtintaudc_thumua arrays
-    // const updatedData0301 = {
-    //   ...data0301,
-    //   tblreport_0301_ls: modifiedKhaiThac,
-    // };
+    console.log('MODIFY:', JSON.stringify(modifiedKhaiThac, null, 2));
+
+    return modifiedKhaiThac;
+  };
+
+  const modifyThongTinKhaiThacLocal = data0301 => {
+    const modifiedKhaiThac = {...data0301};
+
+    if (modifiedKhaiThac.tau_tongcongsuatmaychinh === '') {
+      modifiedKhaiThac.tau_tongcongsuatmaychinh = 0;
+    } else if (isNaN(modifiedKhaiThac.tau_tongcongsuatmaychinh)) {
+      modifiedKhaiThac.tau_tongcongsuatmaychinh = parseInt(
+        modifiedKhaiThac.tau_tongcongsuatmaychinh,
+      );
+    }
+
+    if (modifiedKhaiThac.tau_chieudailonnhat === '') {
+      modifiedKhaiThac.tau_chieudailonnhat = 0;
+    }
+    if (modifiedKhaiThac.chuyenbien_so === '') {
+      modifiedKhaiThac.chuyenbien_so = 0;
+    }
+    if (modifiedKhaiThac.nam === '') {
+      modifiedKhaiThac.nam = 0;
+    }
+    if (modifiedKhaiThac.tongsolaodong === '') {
+      modifiedKhaiThac.tongsolaodong = 0;
+    }
+    if (modifiedKhaiThac.songaykhaithac === '') {
+      modifiedKhaiThac.songaykhaithac = 0;
+    }
+    if (modifiedKhaiThac.so_meluoi === '') {
+      modifiedKhaiThac.so_meluoi = 0;
+    }
+    if (modifiedKhaiThac.tongsanluong === '') {
+      modifiedKhaiThac.tongsanluong = 0;
+    }
+
+    // Modify thumua array
+    modifiedKhaiThac.tblreport_0301_ls = data0301.tblreport_0301_ls.map(
+      item => {
+        // Item has isdelete field with a value of 1, update id to 0
+        return {...item, id: makeid(7)};
+      },
+    );
 
     console.log('MODIFY:', JSON.stringify(modifiedKhaiThac, null, 2));
 
@@ -294,9 +335,12 @@ const Form03ad01 = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
             let dataFix = dataMau;
-            dataFix.dairyname = 'Mẫu Báo cáo khai thác thủy sản'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairyname =
+              'Mẫu Báo cáo khai thác thủy sản' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>

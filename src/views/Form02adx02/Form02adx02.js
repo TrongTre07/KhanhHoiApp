@@ -24,8 +24,9 @@ import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 import ChiTietVeSanLuongThuySan from './item/itemTongCucThuySan/ChiTietVeSanLuongThuySan';
 import XacNhanKhoiLuongThuySanConLai from './item/itemTongCucThuySan/XacNhanKhoiLuongThuySanConLai';
-import { PrintfPDF } from './pdfForm0202/PrintfPDF';
-import { dataMau } from './pdfForm0202/dataMauPDF';
+import {PrintfPDF} from './pdfForm0202/PrintfPDF';
+import {dataMau} from './pdfForm0202/dataMauPDF';
+import makeid from '../others/makeid';
 
 const Form02ad02 = ({route}) => {
   const {
@@ -149,7 +150,7 @@ const Form02ad02 = ({route}) => {
       const data = JSON.parse(result);
       if (data.length > 0) {
         console.log(JSON.stringify(data[i], null, 2));
-        setData0202(data[id]);
+        setData0202(modifyForm0202Local(data[id]));
       }
     }
   };
@@ -195,8 +196,35 @@ const Form02ad02 = ({route}) => {
 
     return updatedData0202;
   };
+  const modifyForm0202Local = data0202 => {
+    // Modify thumua array
+    const modifiedThumua = data0202.ls0202ds.map(item => {
+      return {...item, id: makeid(7)};
+    });
 
+    // Modify thongtintaudc_thumua array
+    const modifiedThongTinTauDCThumua = data0202.xacnhan.lsxacnhan_.map(
+      item => {
+        // Item has isdelete field with a value of 1, update id to 0
+        item = {...item, id: makeid(7)};
+        return item;
+      },
+    );
 
+    // Update data0202 with the modified thumua and thongtintaudc_thumua arrays
+    const updatedData0202 = {
+      ...data0202,
+      ls0202ds: modifiedThumua,
+      xacnhan: {
+        ...data0202.xacnhan, // Spread the existing properties from data0202.xacnhan
+        lsxacnhan_: modifiedThongTinTauDCThumua, // Update lsxacnhan_ with the modified array
+      },
+    };
+
+    console.log('MODIFY LOCAL:', JSON.stringify(updatedData0202, null, 2));
+
+    return updatedData0202;
+  };
 
   React.useEffect(() => {
     const backAction = () => {
@@ -235,9 +263,12 @@ const Form02ad02 = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
             let dataFix = dataMau;
-            dataFix.dairy_name = 'Mẫu Giấy biên nhận bốc dỡ qua cảng'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairy_name =
+              'Mẫu Giấy biên nhận bốc dỡ qua cảng' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
@@ -245,7 +276,7 @@ const Form02ad02 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = modifyForm0202({...data0202});
-              PrintfPDF(dataFix);
+            PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

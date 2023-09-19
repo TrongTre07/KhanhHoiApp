@@ -25,8 +25,9 @@ import {useNavigation} from '@react-navigation/native';
 import data0201Empty from './models/data0201';
 import {ExportPDF} from '../Form02adx01/pdfForm0201/ExportPDF';
 import uploadFile from '../../axios/uploadFile';
-import { dataMau } from './pdfForm0201/dataMauPDF';
-import { PrintfPDF } from './pdfForm0201/PrintfPDF';
+import {dataMau} from './pdfForm0201/dataMauPDF';
+import {PrintfPDF} from './pdfForm0201/PrintfPDF';
+import makeid from '../others/makeid';
 const Form02ad01 = ({route}) => {
   const navigation = useNavigation();
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -182,7 +183,8 @@ const Form02ad01 = ({route}) => {
     const result = await Storage.getItem('form02adx01');
     if (result !== null) {
       const data = JSON.parse(result);
-      if (data.length > 0) setData0201(data[id]);
+      if (data.length > 0)
+        setData0201(modifyThongTinTauDCThumuaLocal(data[id]));
     }
   };
 
@@ -219,16 +221,47 @@ const Form02ad01 = ({route}) => {
         return item;
       },
     );
-
     // Update data0201 with the modified thumua and thongtintaudc_thumua arrays
     const updatedData0201 = {
       ...data0201,
       thumua: modifiedThumua,
       thongtintaudc_thumua: modifiedThongTinTauDCThumua,
     };
-
     console.log('MODIFY:', JSON.stringify(updatedData0201, null, 2));
+    return updatedData0201;
+  };
 
+  const modifyThongTinTauDCThumuaLocal = data0201 => {
+    // Modify thumua array
+    const modifiedThumua = data0201.thumua.map(item => {
+      return {...item, id: makeid(7)};
+    });
+
+    // Modify thongtintaudc_thumua array
+    const modifiedThongTinTauDCThumua = data0201.thongtintaudc_thumua.map(
+      item => {
+        if (item.thongtinhoatdong) {
+          const modifiedThongTinHoatDong = item.thongtinhoatdong.map(
+            subItem => {
+              return {...subItem, id: makeid(7)};
+            },
+          );
+          item = {...item, thongtinhoatdong: modifiedThongTinHoatDong};
+        }
+
+        // Item has isdelete field with a value of 1, update id to 0
+        item = {...item, id: makeid(7)};
+
+        return item;
+      },
+    );
+    // Update data0201 with the modified thumua and thongtintaudc_thumua arrays
+    const updatedData0201 = {
+      ...data0201,
+      thumua: modifiedThumua,
+      thongtintaudc_thumua: modifiedThongTinTauDCThumua,
+    };
+    console.log('MODIFY Local:', JSON.stringify(updatedData0201, null, 2));
     return updatedData0201;
   };
 
@@ -269,9 +302,12 @@ const Form02ad01 = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
             let dataFix = dataMau;
-            dataFix.dairy_name = 'MẤU NHẬT KÝ THU MUA, CHUYỂN TẢI THỦY SẢN'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairy_name =
+              'MẤU NHẬT KÝ THU MUA, CHUYỂN TẢI THỦY SẢN' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
@@ -279,7 +315,7 @@ const Form02ad01 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = modifyThongTinTauDCThumua({...data0201});
-              PrintfPDF(dataFix);
+            PrintfPDF(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

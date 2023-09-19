@@ -23,8 +23,9 @@ import TongCucThuySanView from './TongCucThuySanView';
 import KetQuaKhaiThac from './KetQuaKhaiThac';
 import ThongTinVeHoatDongChuyenTai from './ThongTinVeHoatDongChuyenTai';
 import data0101Empty from './models/data0101Empty';
-import { PrintfPDF } from './pdfForm01/PrintfPDF';
-import { dataMau } from './pdfForm01/dataMauPDF';
+import {PrintfPDF} from './pdfForm01/PrintfPDF';
+import {dataMau} from './pdfForm01/dataMauPDF';
+import makeid from '../others/makeid';
 const Form01adx01 = ({route}) => {
   const {
     getDetailForm0101_Id,
@@ -40,7 +41,7 @@ const Form01adx01 = ({route}) => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [initialValue, setInitialValue] = useState('');
 
-  const {isLoading,setIsLoading} = useContext(UserContext);
+  const {isLoading, setIsLoading} = useContext(UserContext);
   const {initialTitle, setInitialTitle} = useContext(UserContext);
 
   const netInfo = useNetInfo();
@@ -57,7 +58,7 @@ const Form01adx01 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0101_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle('');
       setData0101(data0101Empty);
     }
   }, [netInfo, id, setData0101]);
@@ -67,7 +68,7 @@ const Form01adx01 = ({route}) => {
     const result = await Storage.getItem('form01adx01');
     if (result !== null) {
       const data = JSON.parse(result);
-      if (data.length > 0) setData0101(data[id]);
+      if (data.length > 0) setData0101(modifyFormLocal0101(data[id]));
     }
   };
 
@@ -95,34 +96,39 @@ const Form01adx01 = ({route}) => {
   };
 
   const modifyForm0101 = data0101 => {
-    // Modify thumua array
     const modifiedKhaiThac = data0101.khaithac.map(item => {
       if (!item.hasOwnProperty('isdelete')) {
-        // Item has isdelete field with a value of 1, update id to 0
         return {...item, id: 0};
       }
       return item;
     });
-
-    // Modify thongtintaudc_thumua array
     const modifiedThuMua = data0101.thumua.map(item => {
       if (!item.hasOwnProperty('isdelete')) {
-        // Item has isdelete field with a value of 1, update id to 0
         item = {...item, id: 0};
       }
-
       return item;
     });
-
-    // Update data0202 with the modified thumua and thongtintaudc_thumua arrays
     const updatedData0101 = {
       ...data0101,
       khaithac: modifiedKhaiThac,
       thumua: modifiedThuMua,
     };
+    return updatedData0101;
+  };
 
-    // console.log('MODIFY:', JSON.stringify(updatedData0101, null, 2));
-
+  const modifyFormLocal0101 = data0101 => {
+    const modifiedKhaiThac = data0101.khaithac.map(item => {
+      return {...item, id: makeid(7)};
+    });
+    const modifiedThuMua = data0101.thumua.map(item => {
+      return (item = {...item, id: makeid(7)});
+    });
+    const updatedData0101 = {
+      ...data0101,
+      khaithac: modifiedKhaiThac,
+      thumua: modifiedThuMua,
+    };
+    console.log(JSON.stringify(updatedData0101, null, 2));
     return updatedData0101;
   };
 
@@ -174,9 +180,12 @@ const Form01adx01 = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={() => {
             let dataFix = dataMau;
-            dataFix.dairy_name = 'Mẫu NHẬT KÝ KHAI THÁC THỦY SẢN'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairy_name =
+              'Mẫu NHẬT KÝ KHAI THÁC THỦY SẢN' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
@@ -184,7 +193,7 @@ const Form01adx01 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={
             () => {
-              let dataFix = modifyForm0102({...data0101});
+              let dataFix = modifyForm0101({...data0101});
               PrintfPDF(dataFix);
             }
             //data
