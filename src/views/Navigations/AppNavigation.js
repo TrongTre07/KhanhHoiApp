@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -69,9 +70,9 @@ const MainNavigation = () => {
       await Storage.setItem(nameLocal, JSON.stringify(newData));
 
       if (newData.length < data.length) {
-        Alert.alert(
-          'Thông báo',
+        ToastAndroid.show(
           `Đã gửi ${data.length - newData.length} bản ghi lên server`,
+          ToastAndroid.SHORT,
         );
       }
     }
