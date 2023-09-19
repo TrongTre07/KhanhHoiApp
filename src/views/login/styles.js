@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     loginText: {
         color: 'black',
         fontWeight: '500',
-        fontSize: 24,
+        fontSize: 20,
         marginBottom: 24,
         textAlign: 'center',
     },

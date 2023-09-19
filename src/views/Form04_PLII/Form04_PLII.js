@@ -25,6 +25,7 @@ import TongCucThuySanView from './TongCucThuySanForm04_PL2';
 import TableForm04PL2 from './TableForm04PL2';
 import {PrintfPDF} from './pdfForm04_PLII/PrintfPDF';
 import { dataMau } from './pdfForm04_PLII/dataMauPDF';
+import moment from 'moment';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -138,7 +139,7 @@ const Form04_PLII = ({route}) => {
       if (netInfo.isConnected) getDetailForm04_PLII_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle(`BienBanKiemTraTauCaRoiCang_${moment().format('DD/MM/YYYY')}`)
       setData04_PLII(data04_PLIIEmpty);
     }
   }, [netInfo, id, setData04_PLII]);

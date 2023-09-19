@@ -27,6 +27,7 @@ import KiemTraSanLuongKhaiThac from './KiemTraSanLuongKhaiThac';
 import {dataMau} from './pdfForm03_PLII/dataMauPDF';
 import {PrintfPDF} from './pdfForm03_PLII/PrintfPDF';
 import makeid from '../others/makeid';
+import moment from 'moment';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -142,7 +143,7 @@ const Form03_PLII = ({route}) => {
       if (netInfo.isConnected) getDetailForm03_PLII_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(`BienBanKiemTraTauCaCapCang_${moment().format('DD/MM/YYYY')}`);
       setData03_PLII(data03_PLIIEmpty);
     }
   }, [netInfo, id, setData03_PLII]);

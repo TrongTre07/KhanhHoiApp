@@ -16,6 +16,7 @@ import {useContext} from 'react';
 import {UserContext} from '../../contexts/UserContext';
 import makeid from '../others/makeid';
 import CustomDateTimePicker from '../others/CustomDateTimePicker';
+import stylesOutLine from '../../utils/stylesOutLine';
 
 const widthTT = 60;
 const widthSoDkTauca = 200;
@@ -403,7 +404,7 @@ const KetQuaKhaiThac = () => {
           onPress={() => handleChonItem(rootIndex)}
           style={[
             {flexDirection: 'row', backgroundColor: 'white'},
-            isSelected && {backgroundColor: 'lightblue'},
+            isSelected && {backgroundColor: '#badeda'},
           ]}>
           <Text style={styles.textTT}>{index + 1}</Text>
 
@@ -429,18 +430,22 @@ const KetQuaKhaiThac = () => {
               }}
             />
           </View>
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.vido_tha}
-            onChangeText={text => handleChangeViDoTha(text, item.id)}
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.kinhdo_tha}
-            onChangeText={text => handleChangeKinhDoTha(text, item.id)}
-          />
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.vido_tha}
+              onChangeText={text => handleChangeViDoTha(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.kinhdo_tha}
+              onChangeText={text => handleChangeKinhDoTha(text, item.id)}
+            />
+          </View>
 
           {/* Picker ngay */}
           <View
@@ -464,91 +469,112 @@ const KetQuaKhaiThac = () => {
               }}
             />
           </View>
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.vido_thu}
-            onChangeText={text => handleChangeViDoThu(text, item.id)}
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.kinhdo_thu}
-            onChangeText={text => handleChangeKinhDoThu(text, item.id)}
-          />
-
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_1_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_1_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_2_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_2_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_3_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_3_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_4_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_4_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_5_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_5_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_6_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_6_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_7_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_7_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_8_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_8_kl')
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputKhoiLuongLoai}
-            value={item.loai_9_kl}
-            onChangeText={text =>
-              handleChangeKhoiLuongLoai(text, item.id, 'loai_9_kl')
-            }
-          />
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.vido_thu}
+              onChangeText={text => handleChangeViDoThu(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.kinhdo_thu}
+              onChangeText={text => handleChangeKinhDoThu(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_1_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_1_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_2_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_2_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_3_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_3_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_4_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_4_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_5_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_5_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_6_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_6_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_7_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_7_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_8_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_8_kl')
+              }
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.loai_9_kl}
+              onChangeText={text =>
+                handleChangeKhoiLuongLoai(text, item.id, 'loai_9_kl')
+              }
+            />
+          </View>
           <Text style={styles.textTongKhoiLuong}>{item.tongsanluong}</Text>
         </Pressable>
       );

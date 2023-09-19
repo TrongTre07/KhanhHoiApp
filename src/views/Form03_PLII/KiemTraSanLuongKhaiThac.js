@@ -158,7 +158,7 @@ const KiemTraSanLuongKhaiThac = () => {
         onPress={() => handleChonItem(index)}
         style={[
           {flexDirection: 'row', backgroundColor: 'white'},
-          isSelected && {backgroundColor: 'lightblue'},
+          isSelected && {backgroundColor: '#badeda'},
         ]}>
         <Text style={styles.textTT}>{rootIndex + 1}</Text>
 

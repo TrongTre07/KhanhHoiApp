@@ -9,35 +9,36 @@ import {
   ToastAndroid,
   Alert,
 } from 'react-native';
-import React, { useContext, useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { UserContext } from '../../../../contexts/UserContext';
+import React, {useContext, useState} from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {UserContext} from '../../../../contexts/UserContext';
 import data0201Empty from '../../models/data0102';
+import stylesOutLine from '../../../../utils/stylesOutLine';
 const TableCangca2 = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
-  const { data0102, setData0102 } = useContext(UserContext);
+  const {data0102, setData0102} = useContext(UserContext);
 
   const handleThemDong = () => {
     try {
-      const objAdd =       {
-        tencang: "",
-        loaicangca: "",
+      const objAdd = {
+        tencang: '',
+        loaicangca: '',
         diachi: '',
         dienthoai: '',
         lydokhaitru: '',
         ghichu: '',
-        isdelete: false
-      }
+        isdelete: false,
+      };
       // const objAdd = data0201Empty.cangca_ds_khaitru[0];
       // console.log('objAdd: ',data0201Empty.cangca_ds_khaitru[0]);
 
       // console.log('objAdd okokokokoko: ', objAdd);
-      let updatedData0102 = { ...data0102 };
+      let updatedData0102 = {...data0102};
       // objAdd = {...objAdd, id: Math.random(1,9)};
       // if (updatedData0102.cangca_ds_khaitru) {
       //   updatedData0102.cangca_ds_khaitru.push(objAdd);
       // }
-      updatedData0102.cangca_ds_khaitru.push({ ...objAdd })
+      updatedData0102.cangca_ds_khaitru.push({...objAdd});
       setData0102(updatedData0102);
     } catch (error) {
       console.log('ERROR ', error);
@@ -49,7 +50,7 @@ const TableCangca2 = () => {
     try {
       let lastObject = data0102.cangca_ds_khaitru.length;
       if (lastObject == 1) {
-        Alert.alert('Không thể xóa hết thông tin', '', [{ text: 'OK' }]);
+        Alert.alert('Không thể xóa hết thông tin', '', [{text: 'OK'}]);
         return;
       }
 
@@ -59,7 +60,7 @@ const TableCangca2 = () => {
         }
       });
       if (lastObject == 1) {
-        Alert.alert('Không thể xóa hết thông tin', '', [{ text: 'OK' }]);
+        Alert.alert('Không thể xóa hết thông tin', '', [{text: 'OK'}]);
         return;
       }
 
@@ -68,7 +69,7 @@ const TableCangca2 = () => {
         if (itemToRemove.hasOwnProperty('isdelete')) {
           itemToRemove.isdelete = true;
           // Update data0202 with the modified itemToRemove
-          let tempData = { ...data0102 };
+          let tempData = {...data0102};
           tempData.cangca_ds_khaitru[selectedItemIndex] = itemToRemove;
           // const updatedData0102 = {
           //   ...data0102,
@@ -93,7 +94,7 @@ const TableCangca2 = () => {
         //   setData0102(updatedData0102);
         // }
       } else {
-        Alert.alert('Cần chọn dòng', '', [{ text: 'OK' }]);
+        Alert.alert('Cần chọn dòng', '', [{text: 'OK'}]);
       }
     } catch (error) {
       console.log('ERROR ', error);
@@ -101,25 +102,21 @@ const TableCangca2 = () => {
     }
   };
 
-
   const handleChonItem = index => {
     console.log('index; ', index);
     setSelectedItemIndex(index);
   };
 
-  const TenLoaiThuySanItem = ({ item, index }) => {
+  const TenLoaiThuySanItem = ({item, index}) => {
     // console.log("data0102", data0102);
 
     let countIsDelete = 0;
     let rootIndex = index;
     if (item?.isdelete == true) {
       return null;
-
     } else {
       for (i = 0; i <= index; i++) {
-        if (
-          data0102.cangca_ds_khaitru[i].isdelete
-        ) {
+        if (data0102.cangca_ds_khaitru[i].isdelete) {
           countIsDelete++;
         }
       }
@@ -133,96 +130,108 @@ const TableCangca2 = () => {
         key={index}
         onPress={() => handleChonItem(index)}
         style={[
-          { flexDirection: 'row', backgroundColor: 'white' },
-          isSelected && { backgroundColor: 'lightblue' },
+          {flexDirection: 'row', backgroundColor: 'white'},
+          isSelected && {backgroundColor: 'lightblue'},
         ]}>
         <Text style={styles.textTT}>{rootIndex + 1}</Text>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.tencang}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = { ...data0102 };
-            tempdata0102.cangca_ds_khaitru[index].tencang = text;
-            setData0102(tempdata0102);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.tencang}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_khaitru[index].tencang = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.loaicangca}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = { ...data0102 };
-            tempdata0102.cangca_ds_khaitru[index].loaicangca = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.diachi}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = { ...data0102 };
-            tempdata0102.cangca_ds_khaitru[index].diachi = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.dienthoai}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = { ...data0102 };
-            tempdata0102.cangca_ds_khaitru[index].dienthoai = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.lydokhaitru}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = { ...data0102 };
-            tempdata0102.cangca_ds_khaitru[index].lydokhaitru = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.ghichu}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = { ...data0102 };
-            tempdata0102.cangca_ds_khaitru[index].ghichu = text;
-            setData0102(tempdata0102);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.loaicangca}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_khaitru[index].loaicangca = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
 
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.diachi}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_khaitru[index].diachi = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
 
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.dienthoai}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_khaitru[index].dienthoai = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.lydokhaitru}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_khaitru[index].lydokhaitru = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.ghichu}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_khaitru[index].ghichu = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
       </Pressable>
     );
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
         style={{
           marginHorizontal: 25,
           flexDirection: 'row',
           width: '100%',
           flexWrap: 'wrap',
-        }}
-      >
+        }}>
         <Text
           style={{
             fontWeight: 'bold',
             fontSize: 20,
             lineHeight: 28,
             color: 'black',
-          }}
-        >
+          }}>
           2. Cảng cá đề nghị đưa khỏi danh sách cảng cá chỉ định:{' '}
           <Text
             style={{
@@ -231,17 +240,16 @@ const TableCangca2 = () => {
               fontSize: 20,
               lineHeight: 28,
               color: 'black',
-            }}
-          >
-            (Đối với cảng cá không đảm bảo đủ hệ thống xác nhận nguồn gốc thủy sản từ khai thác)
+            }}>
+            (Đối với cảng cá không đảm bảo đủ hệ thống xác nhận nguồn gốc thủy
+            sản từ khai thác)
           </Text>
         </Text>
       </View>
 
-
       <ScrollView>
         <ScrollView horizontal={true} style={{}}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View
               style={{
                 flexDirection: 'row',
@@ -253,18 +261,20 @@ const TableCangca2 = () => {
               <Text style={styles.textTenLoaiThuySan}>Cảng cá loại</Text>
               <Text style={styles.textTenLoaiThuySan}>Địa chỉ</Text>
               <Text style={styles.textTenLoaiThuySan}>Điện thoại</Text>
-              <Text style={styles.textTenLoaiThuySan}>Lý do đề nghị đưa ra khỏi danh sách cảng chỉ định</Text>
+              <Text style={styles.textTenLoaiThuySan}>
+                Lý do đề nghị đưa ra khỏi danh sách cảng chỉ định
+              </Text>
               <Text style={styles.textTenLoaiThuySan}>Ghi chú</Text>
             </View>
 
             {data0102.cangca_ds_khaitru.map((item, index) =>
-              TenLoaiThuySanItem({ item, index }),
+              TenLoaiThuySanItem({item, index}),
             )}
           </View>
         </ScrollView>
       </ScrollView>
 
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{flexDirection: 'row'}}>
         <Pressable style={styles.btnThemDong} onPress={() => handleThemDong()}>
           <Text style={styles.textBtn}>Thêm dòng</Text>
         </Pressable>

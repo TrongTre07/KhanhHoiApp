@@ -18,7 +18,7 @@ import {StyleSheet } from 'react-native'
     btnText: {
       paddingVertical: 6,
       paddingHorizontal: 14,
-      fontSize: 24,
+      fontSize: 20,
       fontWeight: '600'
     }
   });

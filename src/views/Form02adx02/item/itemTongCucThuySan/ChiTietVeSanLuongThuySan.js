@@ -11,6 +11,7 @@ import {
 import React, {useContext, useState} from 'react';
 import {UserContext} from '../../../../contexts/UserContext';
 import makeid from '../../../others/makeid';
+import stylesOutLine from '../../../../utils/stylesOutLine';
 
 const ChiTietVeSanLuongThuySan = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
@@ -173,22 +174,26 @@ const ChiTietVeSanLuongThuySan = () => {
         onPress={() => handleChonItem(rootIndex)}
         style={[
           {flexDirection: 'row', backgroundColor: 'white'},
-          isSelected && {backgroundColor: 'lightblue'},
+          isSelected && {backgroundColor: '#badeda'},
         ]}>
         <Text style={styles.textTT}>{index + 1}</Text>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.tenloai}
-          onChangeText={text => handleChangeTenLoai(text, item.id)}
-        />
+        <View style={stylesOutLine.outlineForm0202_1}>
+          <TextInput
+            style={[stylesOutLine.textInputOutLineForm0202_1, {width: '98%'}]}
+            value={item.tenloai}
+            onChangeText={text => handleChangeTenLoai(text, item.id)}
+          />
+        </View>
 
-        <TextInput
-          keyboardType="numeric"
-          style={styles.textSanLuong}
-          value={item.khoiluong.toString()}
-          onChangeText={text => handleChangeKhoiLuong(text, item.id)}
-        />
+        <View style={stylesOutLine.outlineForm0202_1_2}>
+          <TextInput
+            keyboardType="numeric"
+            style={stylesOutLine.textInputOutLineForm0202_1}
+            value={item.khoiluong.toString()}
+            onChangeText={text => handleChangeKhoiLuong(text, item.id)}
+          />
+        </View>
       </Pressable>
     );
   };

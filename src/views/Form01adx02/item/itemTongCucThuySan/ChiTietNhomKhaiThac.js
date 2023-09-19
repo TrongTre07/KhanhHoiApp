@@ -13,6 +13,7 @@ import React, {useContext, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {UserContext} from '../../../../contexts/UserContext';
 import data0201Empty from '../../models/data0102';
+import stylesOutLine from '../../../../utils/stylesOutLine';
 const ChiTietNhomKhaiThac = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
   const {data0102, setData0102} = useContext(UserContext);
@@ -150,71 +151,87 @@ const ChiTietNhomKhaiThac = () => {
         onPress={() => handleChonItem(index)}
         style={[
           {flexDirection: 'row', backgroundColor: 'white'},
-          isSelected && {backgroundColor: 'lightblue'},
+          isSelected && {backgroundColor: '#badeda'},
         ]}>
         <Text style={styles.textTT}>{rootIndex + 1}</Text>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.tencang}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = {...data0102};
-            tempdata0102.cangca_ds_denghi[index].tencang = text;
-            setData0102(tempdata0102);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.tencang}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_denghi[index].tencang = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.loaicangca}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = {...data0102};
-            tempdata0102.cangca_ds_denghi[index].loaicangca = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.diachi}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = {...data0102};
-            tempdata0102.cangca_ds_denghi[index].diachi = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.dienthoai}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = {...data0102};
-            tempdata0102.cangca_ds_denghi[index].dienthoai = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.soquyetdinhmocang}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = {...data0102};
-            tempdata0102.cangca_ds_denghi[index].soquyetdinhmocang = text;
-            setData0102(tempdata0102);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.ghichu}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0102 = {...data0102};
-            tempdata0102.cangca_ds_denghi[index].ghichu = text;
-            setData0102(tempdata0102);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.loaicangca}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_denghi[index].loaicangca = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.diachi}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_denghi[index].diachi = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.dienthoai}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_denghi[index].dienthoai = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.soquyetdinhmocang}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_denghi[index].soquyetdinhmocang = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0102}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0101_1}
+            value={item.ghichu}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0102 = {...data0102};
+              tempdata0102.cangca_ds_denghi[index].ghichu = text;
+              setData0102(tempdata0102);
+            }}
+          />
+        </View>
       </Pressable>
     );
   };

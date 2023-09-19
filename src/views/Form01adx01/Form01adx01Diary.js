@@ -239,7 +239,7 @@ const Form01adx01Diary = ({navigation}) => {
       <TouchableOpacity
         // disabled={true}
         onPress={async () => {
-          let dataTemp;
+          let dataTemp
           setIsPDFLoading(true);
           if (netInfo.isConnected) {
             dataTemp = await getDetailForm0101_Id(id);

@@ -25,6 +25,7 @@ import HeaderForm04_PL2_03 from './HeaderForm04_PL3_03';
 import {PrintfPDF} from './pdfForm04_PLIII_03/PrintfPDF';
 import {dataMau} from './pdfForm04_PLIII_03/dataMauPDF';
 import makeid from '../others/makeid';
+import moment from 'moment';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -140,7 +141,7 @@ const Form04_PLIII_03 = ({route}) => {
       if (netInfo.isConnected) getDetailForm04_PLIII_03_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(`XacNhanCamKetSanPhamThuySan_${moment().format('DD/MM/YYYY')}`);
       setData04_PLIII_03(data04_PLIII_03Empty);
     }
   }, [netInfo, id, setData04_PLIII_03]);

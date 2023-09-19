@@ -16,6 +16,7 @@ import makeid from '../../../others/makeid';
 import CustomDateTimePicker from '../../../others/CustomDateTimePicker';
 import CustomDatePicker from '../../../others/CustomDatePicker';
 import moment from 'moment';
+import stylesOutLine from '../../../../utils/stylesOutLine';
 
 const XacNhanKhoiLuongThuySanConLai = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
@@ -166,61 +167,68 @@ const XacNhanKhoiLuongThuySanConLai = () => {
         onPress={() => handleChonItem(index)}
         style={[
           {flexDirection: 'row', backgroundColor: 'white'},
-          isSelected && {backgroundColor: 'lightblue'},
+          isSelected && {backgroundColor: '#badeda'},
         ]}>
         <Text style={styles.textTT}>{rootIndex + 1}</Text>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.tenloai}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0202 = {...data0202};
-            tempdata0202.xacnhan.lsxacnhan_[index].tenloai = text;
-            setData0202(tempdata0202);
-          }}
-        />
-
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.klbocdoquacang.toString()}
-          keyboardType="numeric"
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0202 = {...data0202};
-            tempdata0202.xacnhan.lsxacnhan_[index].klbocdoquacang =
-              Number(text);
-            setData0202(tempdata0202);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.kldaxacnhan.toString()}
-          keyboardType="numeric"
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0202 = {...data0202};
-            tempdata0202.xacnhan.lsxacnhan_[index].kldaxacnhan = parseInt(
-              text,
-              10,
-            );
-            setData0202(tempdata0202);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.klconlai.toString()}
-          keyboardType="numeric"
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata0202 = {...data0202};
-            tempdata0202.xacnhan.lsxacnhan_[index].klconlai = parseInt(
-              text,
-              10,
-            );
-            setData0202(tempdata0202);
-          }}
-        />
+        <View style={stylesOutLine.outline}>
+          <TextInput
+            style={[stylesOutLine.textInputOutLine]}
+            value={item.tenloai}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0202 = {...data0202};
+              tempdata0202.xacnhan.lsxacnhan_[index].tenloai = text;
+              setData0202(tempdata0202);
+            }}
+          />
+        </View>
+        <View style={stylesOutLine.outline}>
+          <TextInput
+            style={stylesOutLine.textInputOutLine}
+            value={item.klbocdoquacang.toString()}
+            keyboardType="numeric"
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0202 = {...data0202};
+              tempdata0202.xacnhan.lsxacnhan_[index].klbocdoquacang =
+                Number(text);
+              setData0202(tempdata0202);
+            }}
+          />
+        </View>
+        <View style={stylesOutLine.outline}>
+          <TextInput
+            style={stylesOutLine.textInputOutLine}
+            value={item.kldaxacnhan.toString()}
+            keyboardType="numeric"
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0202 = {...data0202};
+              tempdata0202.xacnhan.lsxacnhan_[index].kldaxacnhan = parseInt(
+                text,
+                10,
+              );
+              setData0202(tempdata0202);
+            }}
+          />
+        </View>
+        <View style={stylesOutLine.outline}>
+          <TextInput
+            style={stylesOutLine.textInputOutLine}
+            value={item.klconlai.toString()}
+            keyboardType="numeric"
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata0202 = {...data0202};
+              tempdata0202.xacnhan.lsxacnhan_[index].klconlai = parseInt(
+                text,
+                10,
+              );
+              setData0202(tempdata0202);
+            }}
+          />
+        </View>
       </Pressable>
     );
   };
@@ -426,13 +434,12 @@ const styles = StyleSheet.create({
   textTenLoaiThuySan: {
     fontWeight: '500',
     fontSize: 18,
-    // lineHeight: 22,
     padding: 8,
     borderColor: '#0099FF',
     borderWidth: 1,
     width: '23%',
     color: 'black',
-    textAlign: 'center', // Center text horizontally
+    textAlign: 'center',
     textAlignVertical: 'center',
   },
   textSanLuong: {

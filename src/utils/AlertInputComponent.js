@@ -1,5 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, TextInput, Button, Modal, StyleSheet} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Modal,
+  StyleSheet,
+  TouchableOpacity, // Add TouchableOpacity import
+} from 'react-native';
 
 const AlertInputComponent = ({
   visible,
@@ -20,14 +28,15 @@ const AlertInputComponent = ({
   };
 
   const handleSubmit = () => {
-    // if (inputText.trim() !== '') {
     onSubmit(inputText); // Send data back to the parent component
-    // }
-    // setInputText('');
     onClose();
   };
 
-  // Define the dynamic style for the placeholder text based on inputText value
+  const handleOverlayPress = () => {
+    // Handle the overlay press, similar to pressing "Cancel" button
+    onClose();
+  };
+
   const placeholderTextStyle =
     inputText.trim() === '' ? styles.placeholderRed : styles.placeholderGray;
 
@@ -37,7 +46,11 @@ const AlertInputComponent = ({
       transparent={true}
       visible={visible}
       onRequestClose={onClose}>
-      <View style={styles.modalContainer}>
+      <TouchableOpacity // Add the overlay as a TouchableOpacity
+        style={styles.modalContainer}
+        activeOpacity={1}
+        onPress={handleOverlayPress}
+      >
         <View style={styles.modalContent}>
           <Text style={styles.title}>Nhập tên biểu mẫu</Text>
           <TextInput
@@ -48,11 +61,11 @@ const AlertInputComponent = ({
             placeholderTextColor={placeholderTextStyle.color}
           />
           <View style={styles.buttonContainer}>
-            <Button title="Hủy" onPress={onClose} color="#FF6347" />
+            <Button title="Hủy" onPress={onClose} color="#FFBF00" />
             <Button title={action} onPress={handleSubmit} color="#007BFF" />
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 };
@@ -91,6 +104,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: 20,
   },
   placeholderRed: {
     color: 'red',

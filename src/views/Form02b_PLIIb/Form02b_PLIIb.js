@@ -23,6 +23,7 @@ import {useNavigation} from '@react-navigation/native';
 import HeaderForm02_PL2B from './HeaderForm02PL2B';
 import TableForm02PL2B from './TableForm02PL2B';
 import { PrintfPDF } from './pdfForm02b_PLIIb/PrintfPDF';
+import moment from 'moment';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -136,7 +137,7 @@ const Form02b_PLIIb = ({route}) => {
       if (netInfo.isConnected) getDetailForm02b_PLIIb_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle(`ThongTinVanTai_${moment().format('DD/MM/YYYY')}`)
       setData02b_PLIIb(data02b_PLIIbEmpty);
     }
   }, [netInfo, id, setData02b_PLIIb]);

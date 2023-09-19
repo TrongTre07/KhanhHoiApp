@@ -26,6 +26,7 @@ import data0101Empty from './models/data0101Empty';
 import {PrintfPDF} from './pdfForm01/PrintfPDF';
 import {dataMau} from './pdfForm01/dataMauPDF';
 import makeid from '../others/makeid';
+import moment from 'moment';
 const Form01adx01 = ({route}) => {
   const {
     getDetailForm0101_Id,
@@ -58,7 +59,7 @@ const Form01adx01 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0101_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(`NhatKyKhaiThacThuySan_${moment().format('DD/MM/YYYY')}`);
       setData0101(data0101Empty);
     }
   }, [netInfo, id, setData0101]);

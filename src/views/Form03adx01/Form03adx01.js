@@ -23,6 +23,7 @@ import uploadFile from '../../axios/uploadFile';
 import {PrintfPDF} from './pdfForm0301/PrintfPDF';
 import {dataMau} from './pdfForm0301/dataMauPDF';
 import makeid from '../others/makeid';
+import moment from 'moment';
 const Form03ad01 = ({route}) => {
   const {
     getDetailForm0301Id,
@@ -170,7 +171,7 @@ const Form03ad01 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0301Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(`BaoCaoKhaiThacThuySan_${moment().format('DD/MM/YYYY')}`);
       setData0301(data0301Empty);
     }
   }, [netInfo, id, setData0301]);

@@ -20,8 +20,9 @@ import data0401Empty from './models/data0401';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
-import { dataMau } from './pdfForm0401/dataMauPDF';
-import { PrintfPDF } from './pdfForm0401/PrintfPDF';
+import {dataMau} from './pdfForm0401/dataMauPDF';
+import {PrintfPDF} from './pdfForm0401/PrintfPDF';
+import moment from 'moment';
 const Form04ad01 = ({route}) => {
   const {
     getDetailForm0401Id,
@@ -166,7 +167,11 @@ const Form04ad01 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0401Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(
+        `BaoCaoThamDoTimKiemDanDuNguonLoiThuySan_${moment().format(
+          'DD/MM/YYYY',
+        )}`,
+      );
       setData0401(data0401Empty);
     }
   }, [netInfo, id, setData0401]);
@@ -257,9 +262,12 @@ const Form04ad01 = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
             let dataFix = dataMau;
-            dataFix.dairyname = 'MẪU BÁO CÁO THĂM DÒ, TÌM KIẾM, DẪN DỤ NGUỒN LỢI THỦY SẢN'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairyname =
+              'MẪU BÁO CÁO THĂM DÒ, TÌM KIẾM, DẪN DỤ NGUỒN LỢI THỦY SẢN' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>

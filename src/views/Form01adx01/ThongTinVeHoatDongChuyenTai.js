@@ -16,6 +16,7 @@ import {useContext} from 'react';
 import {UserContext} from '../../contexts/UserContext';
 import makeid from '../others/makeid';
 import CustomDateTimePicker from '../others/CustomDateTimePicker';
+import stylesOutLine from '../../utils/stylesOutLine';
 
 const widthTT = 60;
 const widthSoDkTauca = 200;
@@ -210,7 +211,6 @@ const ThongTinVeHoatDongChuyenTai = () => {
     }
   };
 
-
   const handleChangeDate = (date, id) => {
     try {
       // Create a copy of data0101
@@ -311,7 +311,7 @@ const ThongTinVeHoatDongChuyenTai = () => {
           onPress={() => handleChonItem(rootIndex)}
           style={[
             {flexDirection: 'row', backgroundColor: 'white'},
-            isSelected && {backgroundColor: 'lightblue'},
+            isSelected && {backgroundColor: '#badeda'},
           ]}>
           <Text style={styles.textTT}>{index + 1}</Text>
 
@@ -337,47 +337,59 @@ const ThongTinVeHoatDongChuyenTai = () => {
               }}
             />
           </View>
-          <TextInput
-            style={styles.inputToaDo}
-            value={item.tm_ct_bstau}
-            onChangeText={text => handleChangeSoDkTau(text, item.id)}
-          />
-          <TextInput
-            
-            style={styles.inputToaDo}
-            value={item.tm_ct_gpkt}
-            onChangeText={text => handleChangeGPKT(text, item.id)}
-          />
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.tm_ct_bstau}
+              onChangeText={text => handleChangeSoDkTau(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.tm_ct_gpkt}
+              onChangeText={text => handleChangeGPKT(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.tm_ct_vt_vido}
+              onChangeText={text => handleChangeViDo(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.tm_ct_vt_kinhdo}
+              onChangeText={text => handleChangeKinhDo(text, item.id)}
+            />
+          </View>
 
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.tm_ct_vt_vido}
-            onChangeText={text => handleChangeViDo(text, item.id)}
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.tm_ct_vt_kinhdo}
-            onChangeText={text => handleChangeKinhDo(text, item.id)}
-          />
-          <TextInput
-            style={styles.inputToaDo}
-            value={item.daban_ct_loai}
-            onChangeText={text => handleChangeTenLoai(text, item.id)}
-          />
-          <TextInput
-            keyboardType="numeric"
-            style={styles.inputToaDo}
-            value={item.daban_ct_khoiluong}
-            onChangeText={text => handleChangeKhoiLuong(text, item.id)}
-          />
-          <TextInput
-            keyboardType="numeric"
-            editable={false}
-            style={styles.inputToaDo}
-            value={item.tm_ct_thuyentruong}
-          />
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.daban_ct_loai}
+              onChangeText={text => handleChangeTenLoai(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              style={stylesOutLine.textInputOutLineForm0101_1}
+              value={item.daban_ct_khoiluong}
+              onChangeText={text => handleChangeKhoiLuong(text, item.id)}
+            />
+          </View>
+          <View style={stylesOutLine.outlineForm0101_1}>
+            <TextInput
+              keyboardType="numeric"
+              editable={false}
+              value={item.tm_ct_thuyentruong}
+            />
+          </View>
         </Pressable>
       );
     } catch (error) {

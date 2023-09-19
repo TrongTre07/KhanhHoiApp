@@ -28,6 +28,7 @@ import uploadFile from '../../axios/uploadFile';
 import {dataMau} from './pdfForm0201/dataMauPDF';
 import {PrintfPDF} from './pdfForm0201/PrintfPDF';
 import makeid from '../others/makeid';
+import moment from 'moment';
 const Form02ad01 = ({route}) => {
   const navigation = useNavigation();
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -173,7 +174,7 @@ const Form02ad01 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0201Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(`NhatKyThuMuaChuyenTaiThuySan_${moment().format('DD/MM/YYYY')}`);
       setData0201(data0201Empty);
     }
   }, [netInfo, id]);

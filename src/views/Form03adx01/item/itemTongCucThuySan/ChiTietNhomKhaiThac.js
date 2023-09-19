@@ -13,11 +13,11 @@ import React, {useContext, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {UserContext} from '../../../../contexts/UserContext';
 import makeid from '../../../others/makeid';
+import stylesOutLine from '../../../../utils/stylesOutLine';
 
 const ChiTietNhomKhaiThac = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
   const {data0301, setData0301} = useContext(UserContext);
-
 
   const handleChangeTenLoai = (tenLoai, id) => {
     try {
@@ -181,22 +181,25 @@ const ChiTietNhomKhaiThac = () => {
         onPress={() => handleChonItem(rootIndex)}
         style={[
           {flexDirection: 'row', backgroundColor: 'white'},
-          isSelected && {backgroundColor: 'lightblue'},
+          isSelected && {backgroundColor: '#badeda'},
         ]}>
         <Text style={styles.textTT}>{index + 1}</Text>
+        <View style={stylesOutLine.outlineForm0301}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0301_1}
+            value={item.tenloai}
+            onChangeText={text => handleChangeTenLoai(text, item.id)}
+          />
+        </View>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.tenloai}
-          onChangeText={text => handleChangeTenLoai(text, item.id)}
-        />
-
-        <TextInput
-          keyboardType="numeric"
-          style={styles.textSanLuong}
-          value={item.sanluong.toString()}
-          onChangeText={text => handleChangeKhoiLuong(text, item.id)}
-        />
+        <View style={stylesOutLine.outlineForm0301_2}>
+          <TextInput
+            keyboardType="numeric"
+            style={stylesOutLine.textInputOutLineForm0301_2}
+            value={item.sanluong.toString()}
+            onChangeText={text => handleChangeKhoiLuong(text, item.id)}
+          />
+        </View>
       </Pressable>
     );
   };

@@ -27,6 +27,7 @@ import XacNhanKhoiLuongThuySanConLai from './item/itemTongCucThuySan/XacNhanKhoi
 import {PrintfPDF} from './pdfForm0202/PrintfPDF';
 import {dataMau} from './pdfForm0202/dataMauPDF';
 import makeid from '../others/makeid';
+import moment from 'moment';
 
 const Form02ad02 = ({route}) => {
   const {
@@ -138,7 +139,7 @@ const Form02ad02 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0202Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('');
+      setInitialTitle(`GiayBienNhanBocDoThuySanQuaCang_${moment().format('DD/MM/YYYY')}`);
       setData0202(data0202Empty);
     }
   }, [netInfo, id, setData0202]);

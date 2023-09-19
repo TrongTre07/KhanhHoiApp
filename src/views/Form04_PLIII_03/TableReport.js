@@ -165,7 +165,7 @@ const TableReport = () => {
         onPress={() => handleChonItem(index)}
         style={[
           {flexDirection: 'row', backgroundColor: 'white'},
-          isSelected && {backgroundColor: 'lightblue'},
+          isSelected && {backgroundColor: '#badeda'},
         ]}>
         <TextInput
           onFocus={() => handleChonItem(index)}

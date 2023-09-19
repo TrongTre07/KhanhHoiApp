@@ -24,6 +24,7 @@ import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 import { dataMau } from './pdfForm0102/dataMauPDF';
 import { PrintfPDF } from './pdfForm0102/PrintfPDF';
+import moment from 'moment';
 
 const Form01ad02 = ({route}) => {
   const {
@@ -132,7 +133,7 @@ const Form01ad02 = ({route}) => {
       if (netInfo.isConnected) getDetailForm0102Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle(`BaoCaoKetQuaRaSoatCangCa_${moment().format('DD/MM/YYYY')}`)
       setData0102(data0102Empty);
     }
   }, [netInfo, id, setData0102]);
