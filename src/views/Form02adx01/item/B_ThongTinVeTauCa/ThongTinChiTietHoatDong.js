@@ -595,7 +595,10 @@ const ThongTinChiTietHoatDong = ({selectedItem}) => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={
                         data0201.thongtintaudc_thumua[selectedItem]
                           .thongtinhoatdong[0]?.loai_1
@@ -608,7 +611,10 @@ const ThongTinChiTietHoatDong = ({selectedItem}) => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={
                         data0201.thongtintaudc_thumua[selectedItem]
                           .thongtinhoatdong[0]?.loai_2
@@ -621,7 +627,10 @@ const ThongTinChiTietHoatDong = ({selectedItem}) => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={
                         data0201.thongtintaudc_thumua[selectedItem]
                           .thongtinhoatdong[0]?.loai_3
@@ -634,7 +643,10 @@ const ThongTinChiTietHoatDong = ({selectedItem}) => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={
                         data0201.thongtintaudc_thumua[selectedItem]
                           .thongtinhoatdong[0]?.loai_4
@@ -647,7 +659,10 @@ const ThongTinChiTietHoatDong = ({selectedItem}) => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={
                         data0201.thongtintaudc_thumua[selectedItem]
                           .thongtinhoatdong[0]?.loai_5
@@ -660,7 +675,10 @@ const ThongTinChiTietHoatDong = ({selectedItem}) => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={
                         data0201.thongtintaudc_thumua[selectedItem]
                           .thongtinhoatdong[0]?.loai_6

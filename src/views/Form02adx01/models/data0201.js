@@ -1,3 +1,5 @@
+import makeid from '../../others/makeid';
+
 const moment = require('moment');
 
 const data0201Empty = () => {
@@ -21,7 +23,7 @@ const data0201Empty = () => {
     date_create: moment().format('YYYY-MM-DDTHH:mm'),
     thumua: [
       {
-        id: 0,
+        id: makeid(0),
         // dairy_id: data0201.id,
         ngaythang: moment().format('YYYY-MM-DD'),
         id_tau: '',
@@ -45,7 +47,7 @@ const data0201Empty = () => {
     ],
     thongtintaudc_thumua: [
       {
-        id: 0,
+        id: makeid(7),
         // dairy_id: 0,
         id_tau: '',
         tau_bs: '',
@@ -60,7 +62,7 @@ const data0201Empty = () => {
         tg_khaithac_denngay: moment().format('YYYY-MM-DDTHH:mm'),
         thongtinhoatdong: [
           {
-            id: 0,
+            id: makeid(7),
             // dairy_id: data0201.id,
             methu: '1',
             thoidiem_tha: moment().format('YYYY-MM-DDTHH:mm'),

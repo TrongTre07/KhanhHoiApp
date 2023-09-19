@@ -31,7 +31,6 @@ const KetQuaThuMua = () => {
 
   const moment = require('moment');
 
-
   const handleThemDong = () => {
     try {
       const objectAdd = {
@@ -322,7 +321,6 @@ const KetQuaThuMua = () => {
           ]}>
           <Text style={styles.textTT}>{index + 1}</Text>
           <TextInput
-            
             style={styles.textSoDkTauCa}
             value={item.tau_bs}
             onChangeText={text => handleChangeSoDkTau(text, item.id)}
@@ -459,7 +457,10 @@ const KetQuaThuMua = () => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={data0201.thumua[0].loai_1}
                       onChangeText={text =>
                         handleChangeLoai(text, 'loai_1')
@@ -469,7 +470,10 @@ const KetQuaThuMua = () => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={data0201.thumua[0].loai_2}
                       onChangeText={text =>
                         handleChangeLoai(text, 'loai_2')
@@ -479,7 +483,10 @@ const KetQuaThuMua = () => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={data0201.thumua[0].loai_3}
                       onChangeText={text =>
                         handleChangeLoai(text, 'loai_3')
@@ -489,7 +496,10 @@ const KetQuaThuMua = () => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={data0201.thumua[0].loai_4}
                       onChangeText={text =>
                         handleChangeLoai(text, 'loai_4')
@@ -499,7 +509,10 @@ const KetQuaThuMua = () => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={data0201.thumua[0].loai_5}
                       onChangeText={text =>
                         handleChangeLoai(text, 'loai_5')
@@ -509,7 +522,10 @@ const KetQuaThuMua = () => {
                   <View style={{flexDirection: 'column'}}>
                     <Text style={styles.textKhoiLuong}>Loài</Text>
                     <TextInput
-                      style={styles.inputKhoiLuong}
+                      style={[
+                        styles.inputKhoiLuong,
+                        {backgroundColor: 'white'},
+                      ]}
                       value={data0201.thumua[0].loai_6}
                       onChangeText={text =>
                         handleChangeLoai(text, 'loai_6')

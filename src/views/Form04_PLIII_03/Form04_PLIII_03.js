@@ -203,7 +203,7 @@ const Form04_PLIII_03 = ({route}) => {
             const result= ExportPDF(dataFix);
             if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
-          <Text style={styles.actionText}>Xem mẫu</Text>
+          <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionExportPDF, styles.button]}
