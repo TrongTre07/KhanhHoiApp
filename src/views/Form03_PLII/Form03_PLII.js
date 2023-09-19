@@ -24,8 +24,8 @@ import HeaderView from './HeaderView';
 import TongCucThuySanView from './TongCucThuySanView';
 import TableForm03PL2 from './TableForm03PL2';
 import KiemTraSanLuongKhaiThac from './KiemTraSanLuongKhaiThac';
-import { dataMau } from './pdfForm03_PLII/dataMauPDF';
-import { PrintfPDF } from './pdfForm03_PLII/PrintfPDF';
+import {dataMau} from './pdfForm03_PLII/dataMauPDF';
+import {PrintfPDF} from './pdfForm03_PLII/PrintfPDF';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 
@@ -141,7 +141,7 @@ const Form03_PLII = ({route}) => {
       if (netInfo.isConnected) getDetailForm03_PLII_Id(id);
       else getDataLocal();
     } else {
-      setInitialTitle('')
+      setInitialTitle('');
       setData03_PLII(data03_PLIIEmpty);
     }
   }, [netInfo, id, setData03_PLII]);
@@ -244,9 +244,12 @@ const Form03_PLII = ({route}) => {
           style={[styles.actionDownload, styles.button]}
           onPress={async () => {
             let dataFix = dataMau;
-            dataFix.dairyname = 'Mẫu Biên bản kiểm tra tàu cá cập cảng'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
-            if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+            dataFix.dairyname =
+              'Mẫu Biên bản kiểm tra tàu cá cập cảng' +
+              '_' +
+              Math.floor(Math.random() * 100000);
+            const result = ExportPDF(dataFix);
+            if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
         </TouchableOpacity>
