@@ -15,6 +15,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import moment from 'moment';
 import {UserContext} from '../../contexts/UserContext';
 import makeid from '../others/makeid';
+import stylesOutLine from '../../utils/stylesOutLine';
 
 const TableReport = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
@@ -167,106 +168,124 @@ const TableReport = () => {
           {flexDirection: 'row', backgroundColor: 'white'},
           isSelected && {backgroundColor: '#badeda'},
         ]}>
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.sochungnhankhaithac}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[
-              index
-            ].sochungnhankhaithac = text;
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.sochungnhankhaithac}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[
+                index
+              ].sochungnhankhaithac = text;
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
 
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.tentau}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[index].tentau = text;
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.quocgiatreoco}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[index].quocgiatreoco =
-              text;
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.tentau}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[index].tentau = text;
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.quocgiatreoco}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[index].quocgiatreoco =
+                text;
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
 
         <Text style={styles.textTT}></Text>
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.motathuysankhaithac}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[
-              index
-            ].motathuysankhaithac = text;
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
 
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.tongkhoiluongkhaithac.toString()}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            if (isNaN(text)) {
-              text = 0;
-            } else if (text == '') {
-              text = 0;
-            }
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[
-              index
-            ].tongkhoiluongkhaithac = Number(text);
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.khoiluongthuysankhaithacchebien.toString()}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            if (isNaN(text)) {
-              text = 0;
-            } else if (text == '') {
-              text = 0;
-            }
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[
-              index
-            ].khoiluongthuysankhaithacchebien = Number(text);
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
-        <TextInput
-          onFocus={() => handleChonItem(index)}
-          style={styles.textTenLoaiThuySan}
-          value={item.sanphamsaukhichebien.toString()}
-          onChangeText={text => {
-            let tempData04_PLIII_03 = {...data04_PLIII_03};
-            if (isNaN(text)) {
-              text = 0;
-            } else if (text == '') {
-              text = 0;
-            }
-            tempData04_PLIII_03.tbl_xacnhancamket_ls[
-              index
-            ].sanphamsaukhichebien = Number(text);
-            setData04_PLIII_03(tempData04_PLIII_03);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.motathuysankhaithac}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[
+                index
+              ].motathuysankhaithac = text;
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.tongkhoiluongkhaithac.toString()}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              if (isNaN(text)) {
+                text = 0;
+              } else if (text == '') {
+                text = 0;
+              }
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[
+                index
+              ].tongkhoiluongkhaithac = Number(text);
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.khoiluongthuysankhaithacchebien.toString()}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              if (isNaN(text)) {
+                text = 0;
+              } else if (text == '') {
+                text = 0;
+              }
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[
+                index
+              ].khoiluongthuysankhaithacchebien = Number(text);
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
+
+        <View style={stylesOutLine.outlineForm0403}>
+          <TextInput
+            onFocus={() => handleChonItem(index)}
+            style={stylesOutLine.textInputOutLineForm0403}
+            value={item.sanphamsaukhichebien.toString()}
+            onChangeText={text => {
+              let tempData04_PLIII_03 = {...data04_PLIII_03};
+              if (isNaN(text)) {
+                text = 0;
+              } else if (text == '') {
+                text = 0;
+              }
+              tempData04_PLIII_03.tbl_xacnhancamket_ls[
+                index
+              ].sanphamsaukhichebien = Number(text);
+              setData04_PLIII_03(tempData04_PLIII_03);
+            }}
+          />
+        </View>
       </Pressable>
     );
   };
@@ -379,8 +398,6 @@ const styles = StyleSheet.create({
   textTenLoaiThuySan: {
     fontWeight: '500',
     fontSize: 18,
-
-    // lineHeight: 22,
     padding: 8,
     borderColor: '#0099FF',
     borderWidth: 1,

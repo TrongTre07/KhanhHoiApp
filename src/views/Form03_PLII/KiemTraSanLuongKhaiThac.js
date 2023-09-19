@@ -15,6 +15,7 @@ import {UserContext} from '../../contexts/UserContext';
 import makeid from '../others/makeid';
 
 import moment from 'moment';
+import stylesOutLine from '../../utils/stylesOutLine';
 
 const KiemTraSanLuongKhaiThac = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
@@ -162,48 +163,54 @@ const KiemTraSanLuongKhaiThac = () => {
         ]}>
         <Text style={styles.textTT}>{rootIndex + 1}</Text>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.tenloai}
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata03_PLII = {...data03_PLII};
-            tempdata03_PLII.tbldairy_0203_ls[index].tenloai = text;
-            setData03_PLII(tempdata03_PLII);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0302}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0302}
+            value={item.tenloai}
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata03_PLII = {...data03_PLII};
+              tempdata03_PLII.tbldairy_0203_ls[index].tenloai = text;
+              setData03_PLII(tempdata03_PLII);
+            }}
+          />
+        </View>
 
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.slbaocao.toString()}
-          keyboardType="numeric"
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata03_PLII = {...data03_PLII};
-            if (isNaN(text)) {
-              text = 0;
-            }
-            tempdata03_PLII.tbldairy_0203_ls[index].slbaocao = Number(text);
-            setData03_PLII(tempdata03_PLII);
-          }}
-        />
-        <TextInput
-          style={styles.textTenLoaiThuySan}
-          value={item.slthucte.toString()}
-          keyboardType="numeric"
-          // onChangeText={text => handleChangeTenLoai(text, item.id)}
-          onChangeText={text => {
-            let tempdata03_PLII = {...data03_PLII};
-            if (isNaN(text)) {
-              text = 0;
-            }
-            tempdata03_PLII.tbldairy_0203_ls[index].slthucte = parseInt(
-              text,
-              10,
-            );
-            setData03_PLII(tempdata03_PLII);
-          }}
-        />
+        <View style={stylesOutLine.outlineForm0302}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0302}
+            value={item.slbaocao.toString()}
+            keyboardType="numeric"
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata03_PLII = {...data03_PLII};
+              if (isNaN(text)) {
+                text = 0;
+              }
+              tempdata03_PLII.tbldairy_0203_ls[index].slbaocao = Number(text);
+              setData03_PLII(tempdata03_PLII);
+            }}
+          />
+        </View>
+        <View style={stylesOutLine.outlineForm0302}>
+          <TextInput
+            style={stylesOutLine.textInputOutLineForm0302}
+            value={item.slthucte.toString()}
+            keyboardType="numeric"
+            // onChangeText={text => handleChangeTenLoai(text, item.id)}
+            onChangeText={text => {
+              let tempdata03_PLII = {...data03_PLII};
+              if (isNaN(text)) {
+                text = 0;
+              }
+              tempdata03_PLII.tbldairy_0203_ls[index].slthucte = parseInt(
+                text,
+                10,
+              );
+              setData03_PLII(tempdata03_PLII);
+            }}
+          />
+        </View>
         {/* <TextInput
           style={styles.textTenLoaiThuySan}
           value={item.klconlai.toString()}

@@ -24,6 +24,7 @@ import {PrintfPDF} from './pdfForm0301/PrintfPDF';
 import {dataMau} from './pdfForm0301/dataMauPDF';
 import makeid from '../others/makeid';
 import moment from 'moment';
+import HeaderView from './HeaderView';
 const Form03ad01 = ({route}) => {
   const {
     getDetailForm0301Id,
@@ -359,6 +360,7 @@ const Form03ad01 = ({route}) => {
 
   return (
     <ScrollView>
+      <HeaderView />
       <TongCucThuySanView />
       <ChiTietNhomKhaiThac />
       {_renderActionView()}
