@@ -5,7 +5,7 @@ import RNPrint from 'react-native-print';
 
 import moment from 'moment';
 import vi from "moment/locale/vi";
-export const PrintfPDF = async (data) => { 
+export const PrintfPDF02b_PLIIb = async (data) => { 
     // const duLieu = checkUndefine(data)
     const duLieu= data;
  
@@ -241,7 +241,7 @@ export const PrintfPDF = async (data) => {
             </html>`
         });
     } catch (error) {
-        Alert.alert('Lỗi', error.message);
+        Alert.alert('Lỗi print', error.message);
     }
 };
 

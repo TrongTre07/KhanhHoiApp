@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useContext, useEffect, useState, useCallback} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import {ExportPDF} from './pdfForm0102/ExportPDF';
+import {ExportPDF0102} from './pdfForm0102/ExportPDF';
 import {
   Table,
   TableWrapper,
@@ -24,7 +24,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Storage from '../../utils/storage';
 
 import moment from 'moment';
-import {PrintfPDF} from './pdfForm0102/PrintfPDF';
+import {PrintfPDF0102} from './pdfForm0102/PrintfPDF';
 import Spinner from 'react-native-loading-spinner-overlay';
 const Form01adx02Diary = ({navigation}) => {
   const [dataDiary, setDataDiary] = useState([]);
@@ -162,10 +162,11 @@ const Form01adx02Diary = ({navigation}) => {
               dataTemp.dairyname = 'filemau';
             }
           }
-          const result = await ExportPDF(dataTemp);
+          const result = await ExportPDF0102(dataTemp);
           setIsPDFLoading(false);
+          // console.log('ok rooix ');
           result
-            ? navigation.navigate('ViewPDF')
+            ? navigation.navigate('ViewPDF',{data:dataTemp,nameParams:'Mẫu Kết quả rà soát cảng cá chỉ định có đủ hệ thống xác nhận nguồn gốc thủy sản từ khai thác'})
             : Alert.alert('Thất bại', `không thể xem file pdf`);
         }}>
         <View style={[styles.btn, {backgroundColor: '#99FF33'}]}>
@@ -188,14 +189,18 @@ const Form01adx02Diary = ({navigation}) => {
           let tempData;
           if (netInfo.isConnected) {
             tempData = await getDetailForm0102Id(id);
+            tempData.dairyname = tempData.dairyname + '_' +
+            Math.floor(Math.random() * 100000);
           } else {
             const result = await Storage.getItem('form01adx02');
             if (result !== null) {
               const dataLocal = JSON.parse(result);
               tempData = dataLocal[index];
+              tempData.dairyname = tempData.dairyname + '_' +
+              Math.floor(Math.random() * 100000);
             }
           }
-          if (tempData) ExportPDF(tempData);
+          if (tempData) ExportPDF0102(tempData);
           else Alert.alert('Thất bại', `không thể tải file pdf`);
           setIsPDFLoading(false);
         }}>
@@ -226,7 +231,7 @@ const Form01adx02Diary = ({navigation}) => {
               tempData = dataLocal[index];
             }
           }
-          if (tempData) PrintfPDF(tempData);
+          if (tempData) PrintfPDF0102(tempData);
           else Alert.alert('Thất bại', `không thể in file pdf`);
           setIsPDFLoading(false);
         }}>
@@ -306,8 +311,8 @@ export default Form01adx02Diary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    paddingTop: 30,
+    paddingHorizontal:16,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   head: {

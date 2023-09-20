@@ -44,6 +44,7 @@ const HeaderScreen = () => {
         justifyContent: 'space-between',
         width: '100%',
         alignItems: 'center',
+        // padding: 20,
       }}>
       <Image
         style={{width: 170, height: 100, resizeMode: 'contain'}}
@@ -52,20 +53,20 @@ const HeaderScreen = () => {
       {isLoggedIn ? (
         <TouchableOpacity
           style={{
-            backgroundColor: '#E2D1F9',
+            backgroundColor: '#eee',
             borderRadius: 10,
-            height: 50,
-            width: 130,
-            flexDirection: 'row',
+            // borderWidth: 0.1,
             justifyContent: 'center',
             alignItems: 'center',
           }}
           onPress={() => handleLogOut()}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: 'bold',
               color: '#000',
+              marginHorizontal: 20,
+              marginVertical: 10,
               
             }}>
             Đăng xuất
@@ -74,20 +75,19 @@ const HeaderScreen = () => {
       ) : (
         <Pressable
           style={{
-            backgroundColor: '#E2D1F9',
+            backgroundColor: '#eee',
             borderRadius: 10,
-            height: 50,
-            width: 130,
-            flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
           }}
           onPress={() => navigation.navigate('login')}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: 'bold',
               color: '#000',
+              marginHorizontal: 20,
+              marginVertical: 10,
             }}>
             Đăng nhập
           </Text>

@@ -15,13 +15,13 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import HeaderView from './item/HeaderView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AlertInputComponent from '../../utils/AlertInputComponent';
-import {ExportPDF} from './pdfForm0401/ExportPDF';
+import {ExportPDF0401} from './pdfForm0401/ExportPDF';
 import data0401Empty from './models/data0401';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
 import {dataMau} from './pdfForm0401/dataMauPDF';
-import {PrintfPDF} from './pdfForm0401/PrintfPDF';
+import {PrintfPDF0401} from './pdfForm0401/PrintfPDF';
 import moment from 'moment';
 const Form04ad01 = ({route}) => {
   const {
@@ -266,7 +266,7 @@ const Form04ad01 = ({route}) => {
               'MẪU BÁO CÁO THĂM DÒ, TÌM KIẾM, DẪN DỤ NGUỒN LỢI THỦY SẢN' +
               '_' +
               Math.floor(Math.random() * 100000);
-            const result = ExportPDF(dataFix);
+            const result = ExportPDF0401(dataFix);
             if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -275,7 +275,7 @@ const Form04ad01 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = {...data0401};
-            PrintfPDF(dataFix);
+            PrintfPDF0401(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -284,7 +284,7 @@ const Form04ad01 = ({route}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderView />
       <TongCucThuySanView />
       <View style={{backgroundColor: '#fff'}}>{_renderActionView()}</View>
@@ -333,6 +333,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+     marginBottom: 24,
   },
 
   actionText: {

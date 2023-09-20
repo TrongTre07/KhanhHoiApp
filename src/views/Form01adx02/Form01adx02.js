@@ -15,7 +15,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import HeaderView from './item/HeaderView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AlertInputComponent from '../../utils/AlertInputComponent';
-import {ExportPDF} from './pdfForm0102/ExportPDF';
+import {ExportPDF0102} from './pdfForm0102/ExportPDF';
 import data0102Empty from './models/data0102';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
@@ -23,7 +23,7 @@ import {useNavigation} from '@react-navigation/native';
 import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 import { dataMau } from './pdfForm0102/dataMauPDF';
-import { PrintfPDF } from './pdfForm0102/PrintfPDF';
+import { PrintfPDF0102 } from './pdfForm0102/PrintfPDF';
 import moment from 'moment';
 
 const Form01ad02 = ({route}) => {
@@ -197,7 +197,7 @@ const Form01ad02 = ({route}) => {
           onPress={async () => {
             let dataFix = dataMau;
             dataFix.dairyname = 'Mẫu Kết quả rà soát cảng cá chỉ định có đủ hệ thống xác nhận nguồn gốc thủy sản từ khai thác'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
+            const result= ExportPDF0102(dataFix);
             if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -207,7 +207,7 @@ const Form01ad02 = ({route}) => {
           onPress={async () => {
 
             let dataFix = modifyThongTinKhaiThac({...data0102});
-            PrintfPDF(dataFix);
+            PrintfPDF0102(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -216,7 +216,7 @@ const Form01ad02 = ({route}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderView />
       <TongCucThuySanView />
       <ChiTietNhomKhaiThac />
@@ -267,6 +267,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom: 24,
   },
 
   actionText: {

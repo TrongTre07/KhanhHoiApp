@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useContext, useEffect, useState, useCallback} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import {ExportPDF} from './pdfForm01/ExportPDF';
+import {ExportPDF0101} from './pdfForm01/ExportPDF';
 import {
   Table,
   TableWrapper,
@@ -21,7 +21,7 @@ import {
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {useNetInfo} from '@react-native-community/netinfo';
 import Storage from '../../utils/storage';
-import {PrintfPDF} from './pdfForm01/PrintfPDF';
+import {PrintfPDF0101} from './pdfForm01/PrintfPDF';
 import moment from 'moment';
 import Spinner from 'react-native-loading-spinner-overlay';
 const Form01adx01Diary = ({navigation}) => {
@@ -252,10 +252,10 @@ const Form01adx01Diary = ({navigation}) => {
               dataTemp.dairy_name = 'filemau';
             }
           }
-          const result = await ExportPDF(dataTemp);
+          const result = await ExportPDF0101(dataTemp);
           setIsPDFLoading(false);
           result
-            ? navigation.navigate('ViewPDF')
+            ? navigation.navigate('ViewPDF',{data:dataTemp,nameParams:'Mẫu NHẬT KÝ KHAI THÁC THỦY SẢN'})
             : Alert.alert('Thất bại', `không thể xem file pdf`);
           // setCheckForm(true);
           // handleGeneratePDF(id);
@@ -280,15 +280,19 @@ const Form01adx01Diary = ({navigation}) => {
           let tempData;
           if (netInfo.isConnected) {
             tempData = await getDetailForm0101_Id(id);
+            tempData.dairy_name = tempData.dairy_name + '_' +
+            Math.floor(Math.random() * 100000);
           } else {
             const result = await Storage.getItem('form01adx01');
             if (result !== null) {
               const dataLocal = JSON.parse(result);
               tempData = dataLocal[index];
+              tempData.dairy_name = tempData.dairy_name + '_' +
+              Math.floor(Math.random() * 100000);
             }
           }
           setIsPDFLoading(false);
-          ExportPDF(tempData);
+          ExportPDF0101(tempData);
         }}>
         <View style={[styles.btn, {backgroundColor: '#FF99FF'}]}>
           <Text style={styles.btnText}>Tải xuống</Text>
@@ -324,7 +328,7 @@ const Form01adx01Diary = ({navigation}) => {
           }
           // console.log('tempData: ', tempData);
           setIsPDFLoading(false);
-          if (tempData) PrintfPDF(tempData);
+          if (tempData) PrintfPDF0101(tempData);
           else Alert.alert('Thất bại', `không thể in file pdf`);
         }}>
         <View style={[styles.btn, {backgroundColor: '#C0C0C0'}]}>
@@ -405,8 +409,9 @@ export default Form01adx01Diary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    paddingTop: 30,
+    // padding: 16,
+    paddingHorizontal:16,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   head: {

@@ -24,7 +24,7 @@ const Form01Navigation = () => {
   const navigation = useNavigation();
   const netInfo = useNetInfo();
 
-  const {setData0101} = React.useContext(UserContext);
+  const {setData0101,data0101} = React.useContext(UserContext);
 
   const handleNavigateForm01adx01 = async () => {
     navigation.navigate('form01adx01');
@@ -33,6 +33,7 @@ const Form01Navigation = () => {
   const CustomIconBack = () => {
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
         onPress={() => {
           navigation.pop();
           setData0101(data0101Empty);
@@ -41,6 +42,8 @@ const Form01Navigation = () => {
       </TouchableOpacity>
     );
   };
+
+  
 
   return (
     <Stack.Navigator>
@@ -54,7 +57,7 @@ const Form01Navigation = () => {
                 width: '100%',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[styles.btnText, {color: 'red'}]}>
+              <Text style={[styles.btnText, {color: 'black'}]}>
                 Nhật ký khai thác thủy sản
               </Text>
               <TouchableOpacity
@@ -80,6 +83,7 @@ const Form01Navigation = () => {
         options={{
           headerTitle: '',
           headerLeft: () => <CustomIconBack />,
+          // headerRight: () => <CustomRightHeader />,
         }}
         name="form01adx01"
         component={Form01adx01}
@@ -89,3 +93,7 @@ const Form01Navigation = () => {
 };
 
 export default Form01Navigation;
+
+// const styles = StyleSheet.create({
+ 
+// });

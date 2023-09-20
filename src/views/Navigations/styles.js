@@ -2,7 +2,30 @@ import {StyleSheet } from 'react-native'
 
 
  const styles = StyleSheet.create({
+  actionText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  actionDownload: {
+    backgroundColor: '#3b82f6',
+    marginRight: 10,
+  },
 
+  actionExportPDF: {
+    backgroundColor: '#FF9800',
+    marginRight: 10,
+  },
+  button: {
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 8,
+  },
+
+  action: {
+    flexDirection: 'row',
+    marginVertical: 12,
+    marginBottom: 24,
+  },
     textHead: {
       textAlign: 'center',
       padding: 3,

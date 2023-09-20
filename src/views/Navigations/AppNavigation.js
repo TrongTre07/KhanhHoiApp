@@ -114,9 +114,13 @@ const MainNavigation = () => {
       }
     }, [netInfo.isConnected]),
   );
+  
 
   return (
-    <Drawer.Navigator backBehavior="history">
+    <Drawer.Navigator 
+      screenOptions={{
+      unmountOnBlur: true
+    }}>
       <Drawer.Screen
         name="Form01Navigation"
         component={Form01Navigation}
@@ -253,6 +257,40 @@ const MainNavigation = () => {
 };
 
 const AppNavigation = () => {
+
+  // const CustomRightHeader = (data) => {
+  //   return (
+  //     <View style={{flexDirection:'row',alignContent:'space-around'}}>
+        
+  //       <TouchableOpacity
+  //         style={[styles.actionDownload, styles.button]}
+  //         onPress={() => {
+  //           let dataFix = data;
+  //           dataFix.dairy_name =
+  //             'Mẫu NHẬT KÝ KHAI THÁC THỦY SẢN' +
+  //             '_' +
+  //             Math.floor(Math.random() * 100000);
+  //           const result = ExportPDF(dataFix);
+  //           if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
+  //         }}>
+  //         <Text style={styles.actionText}>Tải file</Text>
+  //       </TouchableOpacity>
+  //       <TouchableOpacity
+  //         style={[styles.actionExportPDF, styles.button]}
+  //         onPress={
+  //           () => {
+  //             let dataFix = { ...data };
+  //             PrintfPDF(dataFix);
+  //           }
+  //           //data
+  //         }
+  //         >
+            
+  //         <Text style={styles.actionText}>Xuất File</Text>
+  //       </TouchableOpacity>
+  //     </View>
+  //   )
+  // }
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -272,12 +310,14 @@ const AppNavigation = () => {
       <Stack.Screen
         options={{
           title: '',
+          // headerRight: () => <CustomRightHeader data={data}/>
         }}
         name="ViewPDF"
         component={ViewPDF}></Stack.Screen>
     </Stack.Navigator>
   );
 };
+
 
 export default AppNavigation;
 

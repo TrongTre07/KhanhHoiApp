@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useContext, useEffect, useState, useCallback} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import {ExportPDF} from './pdfForm0202/ExportPDF';
+import {ExportPDF0202} from './pdfForm0202/ExportPDF';
 import {
   Table,
   TableWrapper,
@@ -24,7 +24,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Storage from '../../utils/storage';
 
 import moment from 'moment';
-import {PrintfPDF} from './pdfForm0202/PrintfPDF';
+import {PrintfPDF0202} from './pdfForm0202/PrintfPDF';
 import Spinner from 'react-native-loading-spinner-overlay';
 const Form02adx02Diary = ({navigation}) => {
   const [dataDiary, setDataDiary] = useState([]);
@@ -162,10 +162,10 @@ const Form02adx02Diary = ({navigation}) => {
               dataTemp.dairy_name = 'filemau';
             }
           }
-          const result = await ExportPDF(dataTemp);
+          const result = await ExportPDF0202(dataTemp);
           setIsPDFLoading(false)
           result
-            ? navigation.navigate('ViewPDF')
+            ? navigation.navigate('ViewPDF',{data:dataTemp,nameParams:'Mẫu Giấy biên nhận bốc dỡ qua cảng'})
             : Alert.alert('Thất bại', `không thể xem file pdf`);
         }}>
         <View style={[styles.btn, {backgroundColor: '#99FF33'}]}>
@@ -188,14 +188,18 @@ const Form02adx02Diary = ({navigation}) => {
           let tempData;
           if (netInfo.isConnected) {
             tempData = await getDetailForm0202Id(id);
+            tempData.dairy_name = tempData.dairy_name + '_' +
+            Math.floor(Math.random() * 100000);
           } else {
             const result = await Storage.getItem('form02adx02');
             if (result !== null) {
               const dataLocal = JSON.parse(result);
               tempData = dataLocal[index];
+              tempData.dairy_name = tempData.dairy_name + '_' +
+              Math.floor(Math.random() * 100000);
             }
           }
-          if (tempData) ExportPDF(tempData);
+          if (tempData) ExportPDF0202(tempData);
           else Alert.alert('Thất bại', `không thể tải file pdf`);
           setIsPDFLoading(false)
         }}>
@@ -227,7 +231,7 @@ const Form02adx02Diary = ({navigation}) => {
             }
           }
           console.log('tempData: ', tempData);
-          if (tempData) PrintfPDF(tempData);
+          if (tempData) PrintfPDF0202(tempData);
           else Alert.alert('Thất bại', `không thể in file pdf`);
           setIsPDFLoading(false)
         }}>
@@ -321,8 +325,8 @@ export default Form02adx02Diary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    paddingTop: 30,
+    paddingHorizontal:16,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   head: {

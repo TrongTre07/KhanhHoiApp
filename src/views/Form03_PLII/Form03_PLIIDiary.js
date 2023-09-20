@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useContext, useEffect, useState, useCallback} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import {ExportPDF} from './pdfForm03_PLII/ExportPDF';
+import {ExportPDF03_PLII} from './pdfForm03_PLII/ExportPDF';
 import {
   Table,
   TableWrapper,
@@ -24,7 +24,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Storage from '../../utils/storage';
 
 import moment from 'moment';
-import {PrintfPDF} from './pdfForm03_PLII/PrintfPDF';
+import {PrintfPDF03_PLII} from './pdfForm03_PLII/PrintfPDF';
 import Spinner from 'react-native-loading-spinner-overlay';
 const Form03_PLIIDiary = ({navigation}) => {
   const [dataDiary, setDataDiary] = useState([]);
@@ -162,10 +162,10 @@ const Form03_PLIIDiary = ({navigation}) => {
               dataTemp.dairyname = 'filemau';
             }
           }
-          const result = await ExportPDF(dataTemp);
+          const result = await ExportPDF03_PLII(dataTemp);
           setIsPDFLoading(false);
           result
-            ? navigation.navigate('ViewPDF')
+            ? navigation.navigate('ViewPDF',{data:dataTemp,nameParams:'Mẫu Biên bản kiểm tra tàu cá cập cảng'})
             : Alert.alert('Thất bại', `không thể xem file pdf`);
         }}>
         <View style={[styles.btn, {backgroundColor: '#99FF33'}]}>
@@ -188,14 +188,18 @@ const Form03_PLIIDiary = ({navigation}) => {
           let tempData;
           if (netInfo.isConnected) {
             tempData = await getDetailForm03_PLII_Id(id);
+            tempData.dairyname = tempData.dairyname + '_' +
+            Math.floor(Math.random() * 100000);
           } else {
             const result = await Storage.getItem('form03_PLII');
             if (result !== null) {
               const dataLocal = JSON.parse(result);
               tempData = dataLocal[index];
+              tempData.dairyname = tempData.dairyname + '_' +
+              Math.floor(Math.random() * 100000);
             }
           }
-          if (tempData) ExportPDF(tempData);
+          if (tempData) ExportPDF03_PLII(tempData);
           else Alert.alert('Thất bại', `không thể tải file pdf`);
           setIsPDFLoading(false);
         }}>
@@ -227,7 +231,7 @@ const Form03_PLIIDiary = ({navigation}) => {
             }
           }
           console.log('tempData: ', tempData);
-          if (tempData) PrintfPDF(tempData);
+          if (tempData) PrintfPDF03_PLII(tempData);
           else Alert.alert('Thất bại', `không thể in file pdf`);
           setIsPDFLoading(false);
         }}>
@@ -313,8 +317,8 @@ export default Form03_PLIIDiary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    paddingTop: 30,
+    paddingHorizontal:16,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   head: {

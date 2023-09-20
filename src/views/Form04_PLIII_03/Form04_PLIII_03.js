@@ -15,14 +15,14 @@ import {useNetInfo} from '@react-native-community/netinfo';
 // import HeaderView from './item/HeaderView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AlertInputComponent from '../../utils/AlertInputComponent';
-import {ExportPDF} from './pdfForm04_PLIII_03/ExportPDF';
+import {ExportPDF04_PLIII_03} from './pdfForm04_PLIII_03/ExportPDF';
 import data04_PLIII_03Empty from './models/data04_PLIII_03';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
 import TableForm04_PL2_03 from './TableForm04_PL3_03';
 import HeaderForm04_PL2_03 from './HeaderForm04_PL3_03';
-import {PrintfPDF} from './pdfForm04_PLIII_03/PrintfPDF';
+import {PrintfPDF04_PLIII_03} from './pdfForm04_PLIII_03/PrintfPDF';
 import {dataMau} from './pdfForm04_PLIII_03/dataMauPDF';
 import makeid from '../others/makeid';
 import moment from 'moment';
@@ -222,7 +222,7 @@ const Form04_PLIII_03 = ({route}) => {
               'Mẫu Xác nhận cam kết sản phẩm thủy sản xuất khẩu có nguồn gốc từ thủy sản khai thác nhập khẩu' +
               '_' +
               Math.floor(Math.random() * 100000);
-            const result = ExportPDF(dataFix);
+            const result = ExportPDF04_PLIII_03(dataFix);
             if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -231,7 +231,7 @@ const Form04_PLIII_03 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = modifyForm04_PL3_03({...data04_PLIII_03});
-            PrintfPDF(dataFix);
+            PrintfPDF04_PLIII_03(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -240,7 +240,7 @@ const Form04_PLIII_03 = ({route}) => {
   };
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderForm04_PL2_03 />
       <TableForm04_PL2_03 />
       <View style={{backgroundColor: '#fff'}}>{_renderActionView()}</View>
@@ -289,6 +289,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom: 24,
   },
 
   actionText: {

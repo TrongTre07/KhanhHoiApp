@@ -5,7 +5,7 @@ import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import { checkUndefine } from './checkUndefine';
 import moment from 'moment';
 import vi from "moment/locale/vi";
-export const ExportPDF = async (data) => {
+export const ExportPDF0301 = async (data) => {
 
     // const duLieu = checkUndefine(data)
     const duLieu= data;
@@ -187,7 +187,7 @@ export const ExportPDF = async (data) => {
                     </h1>
                 </div>  
                 <h1 style="padding-top: 6pt; text-align: center;width: 100%;">
-                    MẪU BÁO CÁO KHAI THÁC THỦY SẢN
+                MẪU BÁO CÁO KHAI THÁC THỦY SẢN
                 </h1>
                 <h1 style="padding-top: 6pt; text-align: center;width: 100%;">
                     CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
@@ -208,7 +208,7 @@ export const ExportPDF = async (data) => {
                     <!-- header -->
                     <div>
                             <h1 style="padding-top: 4pt; text-align: center;width: 100%;">
-                                NHẬT KÝ KHAI THÁC THỦY SẢN
+                            NHẬT KÝ KHAI THÁC THỦY SẢN
                             </h1>
                             <h1 style="padding-top: 4pt; text-align: center;width: 100%;font-style: normal;
                                         font-weight: normal;">
@@ -353,11 +353,11 @@ export const ExportPDF = async (data) => {
         const options = {
             html,
             fileName: `${duLieu?.dairyname}`,
-            directory: 'pdf',
+            directory: 'nhatky_pdf',
         };
         const file = await RNHTMLtoPDF.convert(options);
         if(duLieu?.dairyname!=='filemau'){
-            Alert.alert('Thành công', `PDF lưu tại ${file.filePath}`);
+            Alert.alert('Thành công', `PDF lưu tại ${file.filePath.substring(20)}`);
         }
         return true;
         // setCheckViewPDF(false);

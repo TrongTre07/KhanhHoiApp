@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import { ExportPDF } from './pdfForm02b_PLIIb/ExportPDF';
+import { ExportPDF02b_PLIIb } from './pdfForm02b_PLIIb/ExportPDF';
 import {
   Table,
   TableWrapper,
@@ -24,7 +24,7 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import Storage from '../../utils/storage';
 
 import moment from 'moment';
-import { PrintfPDF } from './pdfForm02b_PLIIb/PrintfPDF';
+import { PrintfPDF02b_PLIIb } from './pdfForm02b_PLIIb/PrintfPDF';
 import Spinner from 'react-native-loading-spinner-overlay';
 const Form02b_PLIIbDiary = ({ navigation }) => {
   const [dataDiary, setDataDiary] = useState([]);
@@ -166,10 +166,10 @@ setIsPDFLoading(true)
               dataTemp.dairyname = 'filemau';
             }
           }
-          const result = await ExportPDF(dataTemp);
+          const result = await ExportPDF02b_PLIIb(dataTemp);
           setIsPDFLoading(false)
           result
-            ? navigation.navigate('ViewPDF')
+            ? navigation.navigate('ViewPDF',{data:dataTemp,nameParams:'Mẫu Thông tin vận tải'})
             : Alert.alert('Thất bại', `không thể xem file pdf`);
         }}>
         <View style={[styles.btn, {backgroundColor: '#99FF33'}]}>
@@ -192,14 +192,18 @@ setIsPDFLoading(true)
           let tempData;
           if (netInfo.isConnected) {
             tempData = await getDetailForm02b_PLIIb_Id(id);
+            tempData.dairyname = tempData.dairyname + '_' +
+            Math.floor(Math.random() * 100000);
           } else {
             const result = await Storage.getItem('form02b_PLIIb');
             if (result !== null) {
               const dataLocal = JSON.parse(result);
               tempData = dataLocal[index];
+              tempData.dairyname = tempData.dairyname + '_' +
+              Math.floor(Math.random() * 100000);
             }
           }
-          if (tempData) ExportPDF(tempData);
+          if (tempData) ExportPDF02b_PLIIb(tempData);
           else Alert.alert('Thất bại', `không thể tải file pdf`);
           setIsPDFLoading(false)
         }}>
@@ -231,7 +235,7 @@ setIsPDFLoading(true)
             }
           }
           console.log('tempData: ', tempData);
-          if (tempData) PrintfPDF(tempData);
+          if (tempData) PrintfPDF02b_PLIIb(tempData);
           else Alert.alert('Thất bại', `không thể in file pdf`);
           setIsPDFLoading(false)
         }}>
@@ -320,8 +324,8 @@ export default Form02b_PLIIbDiary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    paddingTop: 30,
+    paddingHorizontal:16,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   head: {

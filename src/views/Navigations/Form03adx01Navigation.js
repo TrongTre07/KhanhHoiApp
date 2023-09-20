@@ -26,6 +26,8 @@ const Form03adx01Navigation = () => {
   const CustomIconBack = () => {
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
+
         onPress={() => {
           navigation.pop();
           setData0301(data0301Empty);

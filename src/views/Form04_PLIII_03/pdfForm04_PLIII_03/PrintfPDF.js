@@ -5,7 +5,7 @@ import RNPrint from 'react-native-print';
 
 import moment from 'moment';
 import vi from "moment/locale/vi";
-export const PrintfPDF = async (data) => { 
+export const PrintfPDF04_PLIII_03 = async (data) => { 
     // const duLieu = checkUndefine(data)
     const duLieu= data;
     

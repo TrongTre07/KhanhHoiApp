@@ -24,8 +24,10 @@ const Form01adx02Navigation = () => {
   };
 
   const CustomIconBack = () => {
+
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
         onPress={() => {
           navigation.pop();
           setData0102(data0102Empty);
@@ -70,6 +72,7 @@ const Form01adx02Navigation = () => {
       />
 
       <Stack.Screen
+      
         options={{
           headerTitle: '',
           headerLeft: () => <CustomIconBack />,

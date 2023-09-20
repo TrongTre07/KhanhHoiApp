@@ -5,7 +5,7 @@ import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import { checkUndefine } from './checkUndefine';
 import moment from 'moment';
 import vi from "moment/locale/vi";
-export const ExportPDF = async (data) => {
+export const ExportPDF0202 = async (data) => {
 
     // const duLieu = checkUndefine(data)
     const duLieu= data;
@@ -418,11 +418,11 @@ export const ExportPDF = async (data) => {
         const options = {
             html,
             fileName: `${duLieu?.dairy_name}`,
-            directory: 'pdf',
+            directory: 'nhatky_pdf',
         };
         const file = await RNHTMLtoPDF.convert(options);
         if(duLieu?.dairy_name!=='filemau'){
-            Alert.alert('Thành công', `PDF lưu tại ${file.filePath}`);
+            Alert.alert('Thành công', `PDF lưu tại ${file.filePath.substring(20)}`);
         }
         return true;
         // setCheckViewPDF(false);

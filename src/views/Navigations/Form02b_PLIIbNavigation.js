@@ -33,6 +33,8 @@ const Form02b_PLIIbNavigation = () => {
   const CustomIconBack = () => {
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
+
         onPress={() => {
           navigation.pop();
           setData02b_PLIIb(data02b_PLIIbEmpty);
@@ -55,7 +57,7 @@ const Form02b_PLIIbNavigation = () => {
                 justifyContent: 'space-between',
               }}>
               <Text style={[styles.btnText, {color: 'black'}]}>
-                Biên nhận thủy sản bốc dỡ qua cảng
+                Thông tin vận tải
               </Text>
               <TouchableOpacity
                 style={{}}

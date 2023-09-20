@@ -36,6 +36,7 @@ const Form02adx01Navigation = () => {
   const CustomIconBack = () => {
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
         onPress={() => {
           navigation.pop();
           // console.log(data0201Empty.thongtintaudc_thumua[0]);

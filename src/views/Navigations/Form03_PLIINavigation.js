@@ -26,6 +26,8 @@ const Form03_PLIINavigation = () => {
   const CustomIconBack = () => {
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
+
         onPress={() => {
           navigation.pop();
           setData03_PLII(data03_PLIIEmpty);

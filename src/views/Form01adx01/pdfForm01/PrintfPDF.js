@@ -8,7 +8,7 @@ import moment from 'moment';
 import vi from 'moment/locale/vi';
 
 
-export const PrintfPDF = async (data) => {
+export const PrintfPDF0101 = async (data) => {
     const duLieu = data;
     let klg = 0;
 
@@ -265,7 +265,7 @@ export const PrintfPDF = async (data) => {
                                     <div style="margin: 16pt 16pt 0 0;">
                                         <div style="display: flex;">
                                             <div style="width: 50%;">
-                                                1. Họ và tên chủ tàu: ${duLieu?.ten_chutau || '......................................................'}
+                                                1. Họ và tên chủ tàu: ${duLieu?.ten_chutau || '............................................................................'}
                                             </div>
                                             <div style="width: 50%;">
                                                 ;2. Họ và tên thuyền trưởng: ${duLieu?.ten_thuyentruong || '..........................................................'};
@@ -274,10 +274,10 @@ export const PrintfPDF = async (data) => {
             
                                         <div style="display: flex; margin-top: 8pt;">
                                             <div style="width: 33%;">
-                                                3. Số đăng ký tàu: ${duLieu?.tau_bs || '.............................'}
+                                                3. Số đăng ký tàu: ${duLieu?.tau_bs || '.......................................'}
                                             </div>
                                             <div style="width: 33%;">
-                                                4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat || '..............'} m
+                                                4. Chiều dài lớn nhất của tàu: ${duLieu?.tau_chieudailonnhat || '..................'} m
                                             </div>
             
                                             <div style="width: 34%;">
@@ -287,10 +287,10 @@ export const PrintfPDF = async (data) => {
             
                                         <div style="display: flex;margin-top: 8pt;">
                                             <div style="width: 50%;">
-                                                6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so || '..........................'}
+                                                6. Số giấy phép khai thác thủy sản: ${duLieu?.gpkt_so || '................................................'}
                                             </div>
                                             <div style="width: 50%;">
-                                                ;Thời hạn đến: ${duLieu?.gpkt_thoihan || '..........................'}
+                                                ;Thời hạn đến: ${duLieu?.gpkt_thoihan || '................................................'}
                                             </div>
                                         </div>
                                         <div style="display: flex;margin-top: 8pt;">
@@ -367,10 +367,10 @@ export const PrintfPDF = async (data) => {
                                                 border-bottom: 1pt solid #2B3D4F;">
                                     <div style="display: flex">
                                         <div style="width: 50%;">
-    10: Cảng đi: ${duLieu?.cang_di || '............................................................'}
+                                        10: Cảng đi: ${duLieu?.cang_di || '............................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ; Thời gian đi: Ngày ${duLieu?.ngay_di ? moment(duLieu?.ngay_di).format('LL') : '.......'} 
+                                            ; Thời gian đi: ${duLieu?.ngay_di ? moment(duLieu?.ngay_di).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'} 
                                         </div>
                                     </div>
                                     <div style="display: flex;margin-top: 4pt;">
@@ -378,12 +378,12 @@ export const PrintfPDF = async (data) => {
                                             11: Cảng về: ${duLieu?.cang_ve || '............................................................'}
                                         </div>
                                         <div style="width: 50%;">
-                                            ; Thời gian cập: Ngày  ${duLieu?.ngay_ve ? moment(duLieu?.ngay_ve).format('LL') : '.......'} 
+                                            ; Thời gian cập: ${duLieu?.ngay_ve ? moment(duLieu?.ngay_ve).format('[Ngày ]LL') : 'Ngày .... Tháng .... Năm ....'} 
                                         </div>
                                     </div>
                                     <div style="display: flex;margin-top: 4pt;">
                                         <div style="width: 50%;">
-                                            12: Nộp Nhật ký: Ngày ${duLieu?.ngaynop ? moment(duLieu?.ngaynop).format('LL') : '.......'} 
+                                            12: Nộp Nhật ký: ${duLieu?.ngaynop ? moment(duLieu?.ngaynop).format('[Ngày] LL') : 'Ngày .... Tháng .... Năm ....'} 
                                         </div>
                                         <div style="width: 50%;">
                                             ; Vào Sổ số: ${duLieu?.vaoso_so || '.........................................'}
@@ -460,46 +460,46 @@ export const PrintfPDF = async (data) => {
             
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_1}
+                                    ${duLieu?.thumua[0]?.loai_1||''}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
             
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_2}
+                                    ${duLieu?.thumua[0]?.loai_2||''}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_3}
+                                    ${duLieu?.thumua[0]?.loai_3||''}
             
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_4}
+                                    ${duLieu?.thumua[0]?.loai_4||''}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài <br>
-                                    ${duLieu?.thumua[0]?.loai_5}
+                                    ${duLieu?.thumua[0]?.loai_5||''}
             
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_6}
+                                    ${duLieu?.thumua[0]?.loai_6||''}
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_7}
+                                    ${duLieu?.thumua[0]?.loai_7||''}
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_8}
+                                    ${duLieu?.thumua[0]?.loai_8||''}
                                 </td>
                                 <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
-                                    ${duLieu?.thumua[0]?.loai_9}
+                                    ${duLieu?.thumua[0]?.loai_9||''}
                                 </td>
             
             
@@ -594,7 +594,7 @@ export const PrintfPDF = async (data) => {
                                 <td class="center-table s5">
                                     ${totalByType[7] == 0 ? '' : totalByType[7]}
                                 </td>
-    <td class="center-table s5">
+                                <td class="center-table s5">
                                     ${totalByType[8] == 0 ? '' : totalByType[8]}
                                 </td>
                                 <td class="center-table s5">
@@ -699,9 +699,9 @@ export const PrintfPDF = async (data) => {
                                 </td>  
                             </tr>
                             ${duLieu?.thumua.map((line, index) => {
-
+    
                         klg += Number(line?.daban_ct_khoiluong);
-
+    
                         return `
                             <tr>
                                 <td class="s5 center-table">

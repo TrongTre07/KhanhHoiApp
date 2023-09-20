@@ -18,9 +18,9 @@ import AlertInputComponent from '../../utils/AlertInputComponent';
 import data0301Empty from './models/data0301';
 import Storage from '../../utils/storage';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {ExportPDF} from './pdfForm0301/ExportPDF';
+import {ExportPDF0301} from './pdfForm0301/ExportPDF';
 import uploadFile from '../../axios/uploadFile';
-import {PrintfPDF} from './pdfForm0301/PrintfPDF';
+import {PrintfPDF0301} from './pdfForm0301/PrintfPDF';
 import {dataMau} from './pdfForm0301/dataMauPDF';
 import makeid from '../others/makeid';
 import moment from 'moment';
@@ -341,7 +341,7 @@ const Form03ad01 = ({route}) => {
               'Mẫu Báo cáo khai thác thủy sản' +
               '_' +
               Math.floor(Math.random() * 100000);
-            const result = ExportPDF(dataFix);
+            const result = ExportPDF0301(dataFix);
             if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -350,7 +350,7 @@ const Form03ad01 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = modifyThongTinKhaiThac({...data0301});
-            PrintfPDF(dataFix);
+            PrintfPDF0301(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -359,7 +359,7 @@ const Form03ad01 = ({route}) => {
   };
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderView />
       <TongCucThuySanView />
       <ChiTietNhomKhaiThac />
@@ -408,6 +408,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom: 24,
   },
 
   actionText: {

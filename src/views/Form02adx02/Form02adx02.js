@@ -15,7 +15,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import HeaderView from './item/HeaderView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AlertInputComponent from '../../utils/AlertInputComponent';
-import {ExportPDF} from './pdfForm0202/ExportPDF';
+import {ExportPDF0202} from './pdfForm0202/ExportPDF';
 import data0202Empty from './models/data0202';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
@@ -24,7 +24,7 @@ import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
 import ChiTietVeSanLuongThuySan from './item/itemTongCucThuySan/ChiTietVeSanLuongThuySan';
 import XacNhanKhoiLuongThuySanConLai from './item/itemTongCucThuySan/XacNhanKhoiLuongThuySanConLai';
-import {PrintfPDF} from './pdfForm0202/PrintfPDF';
+import {PrintfPDF0202} from './pdfForm0202/PrintfPDF';
 import {dataMau} from './pdfForm0202/dataMauPDF';
 import makeid from '../others/makeid';
 import moment from 'moment';
@@ -268,7 +268,7 @@ const Form02ad02 = ({route}) => {
               'Mẫu Giấy biên nhận bốc dỡ qua cảng' +
               '_' +
               Math.floor(Math.random() * 100000);
-            const result = ExportPDF(dataFix);
+            const result = ExportPDF0202(dataFix);
             if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -277,7 +277,7 @@ const Form02ad02 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = modifyForm0202({...data0202});
-            PrintfPDF(dataFix);
+            PrintfPDF0202(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>

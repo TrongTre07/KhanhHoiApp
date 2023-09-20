@@ -5,7 +5,7 @@ import RNPrint from 'react-native-print';
 
 import moment from 'moment';
 import vi from "moment/locale/vi";
-export const PrintfPDF = async (data) => { 
+export const PrintfPDF0301 = async (data) => { 
     // const duLieu = checkUndefine(data)
     const duLieu= data;
     // console.log('duLieu: ', duLieu);
@@ -207,7 +207,7 @@ export const PrintfPDF = async (data) => {
                         <!-- header -->
                         <div>
                                 <h1 style="padding-top: 4pt; text-align: center;width: 100%;">
-                                    NHẬT KÝ KHAI THÁC THỦY SẢN
+                                NHẬT KÝ KHAI THÁC THỦY SẢN
                                 </h1>
                                 <h1 style="padding-top: 4pt; text-align: center;width: 100%;font-style: normal;
                                             font-weight: normal;">

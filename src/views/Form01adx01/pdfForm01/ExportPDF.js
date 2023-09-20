@@ -3,7 +3,7 @@ import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import moment from 'moment';
 import vi from 'moment/locale/vi';
 
-export const ExportPDF = async (data) => {
+export const ExportPDF0101 = async (data) => {
 
     const duLieu = data;
     let klg = 0;
@@ -456,46 +456,46 @@ MẪU NHẬT KÝ KHAI THÁC THỦY SẢN
         
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_1}
+                                ${duLieu?.thumua[0]?.loai_1||''}
         
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
         
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_2}
+                                ${duLieu?.thumua[0]?.loai_2||''}
         
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_3}
+                                ${duLieu?.thumua[0]?.loai_3||''}
         
         
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_4}
+                                ${duLieu?.thumua[0]?.loai_4||''}
         
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài <br>
-                                ${duLieu?.thumua[0]?.loai_5}
+                                ${duLieu?.thumua[0]?.loai_5||''}
         
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_6}
+                                ${duLieu?.thumua[0]?.loai_6||''}
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_7}
+                                ${duLieu?.thumua[0]?.loai_7||''}
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_8}
+                                ${duLieu?.thumua[0]?.loai_8||''}
                             </td>
                             <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
                                 Loài<br>
-                                ${duLieu?.thumua[0]?.loai_9}
+                                ${duLieu?.thumua[0]?.loai_9||''}
                             </td>
         
         
@@ -778,11 +778,11 @@ Thông tin tàu thu mua/chuyển tải </p>
         const options = {
             html,
             fileName: `${duLieu?.dairy_name}`,
-            directory: 'pdf',
+            directory: 'nhatky_pdf',
         };
         const file = await RNHTMLtoPDF.convert(options);
         if (duLieu?.dairy_name !== 'filemau') {
-            Alert.alert('Thành công', `PDF lưu tại ${file.filePath}`);
+            Alert.alert('Thành công', `PDF lưu tại ${file.filePath.substring(20)}`);
         }
         return true;
         // setCheckViewPDF(false);

@@ -15,7 +15,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 // import HeaderView from './item/HeaderView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AlertInputComponent from '../../utils/AlertInputComponent';
-import {ExportPDF} from './pdfForm04_PLII/ExportPDF';
+import {ExportPDF04_PLII} from './pdfForm04_PLII/ExportPDF';
 import data04_PLIIEmpty from './models/data04_PLII';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
@@ -23,7 +23,7 @@ import {useNavigation} from '@react-navigation/native';
 import HeaderForm04_PL2 from './HeaderForm04_PL2';
 import TongCucThuySanView from './TongCucThuySanForm04_PL2';
 import TableForm04PL2 from './TableForm04PL2';
-import {PrintfPDF} from './pdfForm04_PLII/PrintfPDF';
+import {PrintfPDF04_PLII} from './pdfForm04_PLII/PrintfPDF';
 import { dataMau } from './pdfForm04_PLII/dataMauPDF';
 import moment from 'moment';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
@@ -194,7 +194,7 @@ const Form04_PLII = ({route}) => {
           onPress={async () => {
             let dataFix = dataMau;
             dataFix.dairyname = 'Mẫu Biên bản kiểm tra tàu cá rời cảng'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF(dataFix);
+            const result= ExportPDF04_PLII(dataFix);
             if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -203,7 +203,7 @@ const Form04_PLII = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = {...data04_PLII};
-            PrintfPDF(dataFix);
+            PrintfPDF04_PLII(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -212,7 +212,7 @@ const Form04_PLII = ({route}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderForm04_PL2 />
       <TongCucThuySanView />
       <TableForm04PL2 />
@@ -262,6 +262,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom:24,
   },
 
   actionText: {

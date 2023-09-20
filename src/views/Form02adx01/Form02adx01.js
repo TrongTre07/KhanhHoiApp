@@ -23,10 +23,10 @@ import {useState} from 'react';
 import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
 import data0201Empty from './models/data0201';
-import {ExportPDF} from '../Form02adx01/pdfForm0201/ExportPDF';
+import {ExportPDF0201} from '../Form02adx01/pdfForm0201/ExportPDF';
 import uploadFile from '../../axios/uploadFile';
 import {dataMau} from './pdfForm0201/dataMauPDF';
-import {PrintfPDF} from './pdfForm0201/PrintfPDF';
+import {PrintfPDF0201} from './pdfForm0201/PrintfPDF';
 import makeid from '../others/makeid';
 import moment from 'moment';
 const Form02ad01 = ({route}) => {
@@ -307,7 +307,7 @@ const Form02ad01 = ({route}) => {
               'MẤU NHẬT KÝ THU MUA, CHUYỂN TẢI THỦY SẢN' +
               '_' +
               Math.floor(Math.random() * 100000);
-            const result = ExportPDF(dataFix);
+            const result = ExportPDF0201(dataFix);
             if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -316,7 +316,7 @@ const Form02ad01 = ({route}) => {
           style={[styles.actionExportPDF, styles.button]}
           onPress={async () => {
             let dataFix = modifyThongTinTauDCThumua({...data0201});
-            PrintfPDF(dataFix);
+            PrintfPDF0201(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -325,7 +325,7 @@ const Form02ad01 = ({route}) => {
   };
 
   return (
-    <ScrollView style={{backgroundColor:'white'}}>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderView />
       <TongCucThuySanView />
       <KetQuaThuMua />
@@ -375,6 +375,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom: 24,
   },
 
   actionText: {

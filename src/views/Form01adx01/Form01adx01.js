@@ -17,13 +17,13 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import {useNavigation} from '@react-navigation/native';
 import AlertInputComponent from '../../utils/AlertInputComponent';
 import uploadFile from '../../axios/uploadFile';
-import {ExportPDF} from './pdfForm01/ExportPDF';
+import {ExportPDF0101} from './pdfForm01/ExportPDF';
 import HeaderView from './HeaderView';
 import TongCucThuySanView from './TongCucThuySanView';
 import KetQuaKhaiThac from './KetQuaKhaiThac';
 import ThongTinVeHoatDongChuyenTai from './ThongTinVeHoatDongChuyenTai';
 import data0101Empty from './models/data0101Empty';
-import {PrintfPDF} from './pdfForm01/PrintfPDF';
+import {PrintfPDF0101} from './pdfForm01/PrintfPDF';
 import {dataMau} from './pdfForm01/dataMauPDF';
 import makeid from '../others/makeid';
 import moment from 'moment';
@@ -185,7 +185,7 @@ const Form01adx01 = ({route}) => {
               'Mẫu NHẬT KÝ KHAI THÁC THỦY SẢN' +
               '_' +
               Math.floor(Math.random() * 100000);
-            const result = ExportPDF(dataFix);
+            const result = ExportPDF0101(dataFix);
             if (!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -195,7 +195,7 @@ const Form01adx01 = ({route}) => {
           onPress={
             () => {
               let dataFix = modifyForm0101({...data0101});
-              PrintfPDF(dataFix);
+              PrintfPDF0101(dataFix);
             }
             //data
           }>
@@ -310,7 +310,7 @@ const Form01adx01 = ({route}) => {
   }, []);
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderView />
       <TongCucThuySanView />
       <KetQuaKhaiThac />
@@ -350,6 +350,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding:12
   },
   button: {
     borderRadius: 5,
@@ -360,6 +361,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom: 24,
   },
 
   actionText: {

@@ -33,6 +33,8 @@ const Form04_PLIII_03Navigation = () => {
   const CustomIconBack = () => {
     return (
       <TouchableOpacity
+        style={{marginLeft: 16}}
+
         onPress={() => {
           navigation.pop();
           setData04_PLIII_03(data04_PLIII_03Empty);

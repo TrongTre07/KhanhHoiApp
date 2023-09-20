@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useContext, useEffect, useState, useCallback} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import {ExportPDF} from './pdfForm04_PLIII_03/ExportPDF';
+import {ExportPDF04_PLIII_03} from './pdfForm04_PLIII_03/ExportPDF';
 import {
   Table,
   TableWrapper,
@@ -24,7 +24,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Storage from '../../utils/storage';
 
 import moment from 'moment';
-import {PrintfPDF} from './pdfForm04_PLIII_03/PrintfPDF';
+import {PrintfPDF04_PLIII_03} from './pdfForm04_PLIII_03/PrintfPDF';
 import Spinner from 'react-native-loading-spinner-overlay';
 const Form04_PLIII_03Diary = ({navigation}) => {
   const [dataDiary, setDataDiary] = useState([]);
@@ -162,10 +162,10 @@ const Form04_PLIII_03Diary = ({navigation}) => {
               dataTemp.dairyname = 'filemau';
             }
           }
-          const result = await ExportPDF(dataTemp);
+          const result = await ExportPDF04_PLIII_03(dataTemp);
           setIsPDFLoading(false)
           result
-            ? navigation.navigate('ViewPDF')
+            ? navigation.navigate('ViewPDF',{data:dataTemp,nameParams:'Mẫu Xác nhận cam kết sản phẩm thủy sản xuất khẩu có nguồn gốc từ thủy sản khai thác nhập khẩu'})
             : Alert.alert('Thất bại', `không thể xem file pdf`);
         }}>
         <View style={[styles.btn, {backgroundColor: '#99FF33'}]}>
@@ -188,14 +188,18 @@ const Form04_PLIII_03Diary = ({navigation}) => {
           let tempData;
           if (netInfo.isConnected) {
             tempData = await getDetailForm04_PLIII_03_Id(id);
+            tempData.dairyname = tempData.dairyname + '_' +
+            Math.floor(Math.random() * 100000);
           } else {
             const result = await Storage.getItem('form04_PLIII_03');
             if (result !== null) {
               const dataLocal = JSON.parse(result);
               tempData = dataLocal[index];
+              tempData.dairyname = tempData.dairyname + '_' +
+              Math.floor(Math.random() * 100000);
             }
           }
-          if (tempData) ExportPDF(tempData);
+          if (tempData) ExportPDF04_PLIII_03(tempData);
           else Alert.alert('Thất bại', `không thể tải file pdf`);
           setIsPDFLoading(false)
         }}>
@@ -227,7 +231,7 @@ const Form04_PLIII_03Diary = ({navigation}) => {
             }
           }
           console.log('tempData: ', tempData);
-          if (tempData) PrintfPDF(tempData);
+          if (tempData) PrintfPDF04_PLIII_03(tempData);
           else Alert.alert('Thất bại', `không thể in file pdf`);
           setIsPDFLoading(false)
         }}>
@@ -315,8 +319,8 @@ export default Form04_PLIII_03Diary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    paddingTop: 30,
+    paddingHorizontal:16,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   head: {

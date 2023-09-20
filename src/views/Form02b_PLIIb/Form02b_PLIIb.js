@@ -15,14 +15,14 @@ import {useNetInfo} from '@react-native-community/netinfo';
 // import HeaderView from './item/HeaderView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AlertInputComponent from '../../utils/AlertInputComponent';
-import {ExportPDF} from './pdfForm02b_PLIIb/ExportPDF';
+import {ExportPDF02b_PLIIb} from './pdfForm02b_PLIIb/ExportPDF';
 import data02b_PLIIbEmpty from './models/data02b_PLIIb';
 import uploadFile from '../../axios/uploadFile';
 import Storage from '../../utils/storage';
 import {useNavigation} from '@react-navigation/native';
 import HeaderForm02_PL2B from './HeaderForm02PL2B';
 import TableForm02PL2B from './TableForm02PL2B';
-import { PrintfPDF } from './pdfForm02b_PLIIb/PrintfPDF';
+import { PrintfPDF02b_PLIIb } from './pdfForm02b_PLIIb/PrintfPDF';
 import moment from 'moment';
 // import ChiTietNhomKhaiThac from './item/itemTongCucThuySan/ChiTietNhomKhaiThac';
 // import TableCangca2 from './item/itemTongCucThuySan/TableCangca2';
@@ -207,7 +207,7 @@ const Form02b_PLIIb = ({route}) => {
           onPress={async () => {
             // let dataFix = dataMau;
             // dataFix.dairy_name = 'Mẫu Thông tin vận tải'+'_'+Math.floor(Math.random() * 100000);
-            const result= ExportPDF({dairyname : 'Mẫu Thông tin vận tải'+'_'+Math.floor(Math.random() * 100000)});
+            const result= ExportPDF02b_PLIIb({dairyname : 'Mẫu Thông tin vận tải'+'_'+Math.floor(Math.random() * 100000)});
             if(!result) Alert.alert('Thất bại', `không thể tải file pdf`);
           }}>
           <Text style={styles.actionText}>Tải mẫu</Text>
@@ -217,7 +217,7 @@ const Form02b_PLIIb = ({route}) => {
           onPress={async () => {
             let dataFix = {...data02b_PLIIb};
 
-            PrintfPDF(dataFix);
+            PrintfPDF02b_PLIIb(dataFix);
           }}>
           <Text style={styles.actionText}>Xuất file</Text>
         </TouchableOpacity>
@@ -226,7 +226,7 @@ const Form02b_PLIIb = ({route}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: 'white',padding:12}}>
       <HeaderForm02_PL2B />
       <TableForm02PL2B />
       <View style={{backgroundColor: '#fff'}}>{_renderActionView()}</View>
@@ -275,6 +275,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     marginVertical: 12,
+    marginBottom:24,
   },
 
   actionText: {
