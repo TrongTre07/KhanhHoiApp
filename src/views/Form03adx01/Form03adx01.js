@@ -359,7 +359,7 @@ const Form03ad01 = ({route}) => {
   };
 
   return (
-    <ScrollView style={{backgroundColor:'white'}}>
+    <ScrollView style={{backgroundColor: 'white'}}>
       <HeaderView />
       <TongCucThuySanView />
       <ChiTietNhomKhaiThac />
