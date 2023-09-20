@@ -47,7 +47,7 @@ const Form04_PLIINavigation = () => {
                 width: '100%',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[styles.btnText, {color: 'red'}]}>
+              <Text style={[styles.btnText, {color: 'black'}]}>
               Biên bản kiểm tra tàu cá rời cảng
               </Text>
               <TouchableOpacity

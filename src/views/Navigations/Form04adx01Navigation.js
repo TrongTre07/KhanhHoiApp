@@ -47,8 +47,8 @@ const Form04adx01Navigation = () => {
                 width: '100%',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[styles.btnText, {color: 'red'}]}>
-                Báo cáo khai thác thủy sản
+              <Text style={[styles.btnText, {color: 'black'}]}>
+              Báo cáo thăm dò, tìm kiếm, dẫn dụ nguồn lợi thủy sản
               </Text>
               <TouchableOpacity
                 style={{}}

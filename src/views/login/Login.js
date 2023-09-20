@@ -55,11 +55,10 @@ const Login = ({navigation}) => {
           username: username,
           password: password,
         };
-          
+
         const jsonValue = JSON.stringify(user);
         await Storage.setItem('userLogin', jsonValue);
-      } else 
-        await Storage.removeItem('userLogin');
+      } else await Storage.removeItem('userLogin');
 
       setIsLoading(false);
     } catch (error) {
@@ -83,6 +82,7 @@ const Login = ({navigation}) => {
         />
         <View style={styles.input}>
           <TextInput
+            style={{color: 'black'}}
             placeholder="Password"
             placeholderTextColor={'gray'}
             secureTextEntry={showPassword}

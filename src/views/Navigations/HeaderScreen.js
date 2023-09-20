@@ -1,12 +1,20 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity,Alert } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+  Pressable,
+} from 'react-native';
 import React, {useContext} from 'react';
 
 import {UserContext, UserProvider} from '../../contexts/UserContext';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HeaderScreen = () => {
-  const {isLoggedIn,setIsLoggedIn,dataInf} = useContext(UserContext);
+  const {isLoggedIn, setIsLoggedIn, dataInf} = useContext(UserContext);
   const navigation = useNavigation();
 
   const handleLogOut = () => {
@@ -23,35 +31,72 @@ const HeaderScreen = () => {
           onPress: async () => {
             setIsLoggedIn(false);
             AsyncStorage.removeItem('token');
-          }
-
+          },
         },
       ],
-      { cancelable: false }
+      {cancelable: false},
     );
   };
-    return (
-        <View style={{ flexDirection: 'row', justifyContent:'space-between',width:'100%',alignItems:'center'}}>
-            <Image style={{width:170,height:100,resizeMode:'contain' }} source={require('../../img/logo-khanhhoi.png')} />
-                {isLoggedIn?
-            <TouchableOpacity onPress={()=>handleLogOut()}>
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        alignItems: 'center',
+      }}>
+      <Image
+        style={{width: 170, height: 100, resizeMode: 'contain'}}
+        source={require('../../img/logo-khanhhoi.png')}
+      />
+      {isLoggedIn ? (
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#E2D1F9',
+            borderRadius: 10,
+            height: 50,
+            width: 130,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => handleLogOut()}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: 'bold',
+              color: '#000',
+              
+            }}>
+            Đăng xuất
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <Pressable
+          style={{
+            backgroundColor: '#E2D1F9',
+            borderRadius: 10,
+            height: 50,
+            width: 130,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => navigation.navigate('login')}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: 'bold',
+              color: '#000',
+            }}>
+            Đăng nhập
+          </Text>
+        </Pressable>
+      )}
+    </View>
+  );
+};
 
-                <Text style={{ fontSize: 20, fontWeight: 'bold',color:'#000', marginLeft: 16 }}>Đăng xuất</Text>
-                
-            </TouchableOpacity>
+export default HeaderScreen;
 
-                :
-                <TouchableOpacity onPress={() => navigation.navigate('login') }>
-            
-                <Text style={{ fontSize: 20, fontWeight: 'bold',color:'#000', marginLeft: 16 }}>Đăng nhập</Text>
-                </TouchableOpacity>
-            
-            }
-
-        </View>
-    )
-}
-
-export default HeaderScreen
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

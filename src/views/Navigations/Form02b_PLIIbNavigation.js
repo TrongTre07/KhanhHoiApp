@@ -54,7 +54,7 @@ const Form02b_PLIIbNavigation = () => {
                 width: '100%',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[styles.btnText, {color: 'red'}]}>
+              <Text style={[styles.btnText, {color: 'black'}]}>
                 Biên nhận thủy sản bốc dỡ qua cảng
               </Text>
               <TouchableOpacity

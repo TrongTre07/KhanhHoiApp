@@ -1,5 +1,12 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid } from 'react-native'
-import React, { useContext, useEffect } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ToastAndroid,
+} from 'react-native';
+import React, {useContext, useEffect} from 'react';
 
 import Form04_PLIII_03 from '../Form04_PLIII_03/Form04_PLIII_03';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -47,16 +54,21 @@ const Form04_PLIII_03Navigation = () => {
                 width: '100%',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[ {      
-                paddingVertical: 6,
-                paddingHorizontal: 16,
-                maxWidth:'90%',
-                fontSize: 19,
-                color:'red',
-                // letterSpacing: 0.005,
-                letterSpacing: 0.5,
-                fontWeight: '600'}]}>
-                  Xác nhận cam kết sản phẩm thủy sản xuất khẩu có nguồn gốc từ thủy sản khai thác nhập khẩu
+              <Text
+                style={[
+                  {
+                    paddingVertical: 6,
+                    paddingHorizontal: 16,
+                    maxWidth: '90%',
+                    fontSize: 19,
+                    color: 'black',
+                    // letterSpacing: 0.005,
+                    letterSpacing: 0.5,
+                    fontWeight: '600',
+                  },
+                ]}>
+                Xác nhận cam kết sản phẩm thủy sản xuất khẩu có nguồn gốc từ
+                thủy sản khai thác nhập khẩu
               </Text>
               <TouchableOpacity
                 style={{}}

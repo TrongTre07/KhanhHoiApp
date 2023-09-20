@@ -58,7 +58,7 @@ const Form02adx01Navigation = () => {
                 width: '100%',
                 justifyContent: 'space-between',
               }}>
-              <Text style={[styles.btnText, {color: 'red'}]}>
+              <Text style={[styles.btnText, {color: 'black'}]}>
                 Nhật ký thu mua, chuyền tải thủy sản
               </Text>
               <TouchableOpacity
