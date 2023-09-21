@@ -409,13 +409,13 @@ export const PrintfPDF0101 = async (data) => {
                         <table cellspacing="0"
                             style="width:100%; height: auto; table-layout: fixed; overflow-wrap: break-word;">
                             <tr>
-                                <td style="text-align: center; vertical-align: middle; width: 5%;" rowspan="2"
+                                <td style="text-align: center; vertical-align: middle; width: 4%;" rowspan="2"
                                     bgcolor="#D1D6DB">
                                     <div class="s4">
                                         Mẻ thứ
                                     </div>
                                 </td>
-                                <td style="text-align: center; vertical-align: middle; width: 7%;" rowspan="2"
+                                <td style="text-align: center; vertical-align: middle; " rowspan="2"
                                     bgcolor="#D1D6DB">
                                     <p class="s4">
                                         Thời điểm thả (giờ, phút, ngày, tháng)</p>
@@ -425,7 +425,7 @@ export const PrintfPDF0101 = async (data) => {
                                     <p class="s4">
                                         Vị trí thả </p>
                                 </td>
-                                <td style="text-align: center; vertical-align: middle; width: 7%;" rowspan="2" bgcolor="#D1D6DB">
+                                <td style="text-align: center; vertical-align: middle; " rowspan="2" bgcolor="#D1D6DB">
                                     <p class="s4">
                                         Thời điểm thu (giờ, phút, ngày, tháng)
                                          </p>
@@ -435,69 +435,69 @@ export const PrintfPDF0101 = async (data) => {
                                     <p class="s4">
                                         Vị trí thu</p>
                                 </td>
-                                <td style="width: 47%;" class="center-table" colspan="9" bgcolor="#D1D6DB">
+                                <td style="width: 49%;" class="center-table" colspan="9" bgcolor="#D1D6DB">
                                     <p class="s4">
                                         Sản lượng các loài thủy sản chủ yếu (kg) </p>
                                 </td>
-                                <td style="width: 10%;" class="center-table" rowspan="2" bgcolor="#D1D6DB">
+                                <td style="width: 9%;" class="center-table" rowspan="2" bgcolor="#D1D6DB">
                                     <p class="s4">
                                         Tổng sản lượng (kg) </p>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Vĩ độ
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Kinh độ
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Vĩ độ
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Kinh độ
                                 </td>
             
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_1||''}
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
             
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_2||''}
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_3||''}
             
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_4||''}
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài <br>
                                     ${duLieu?.thumua[0]?.loai_5||''}
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_6||''}
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_7||''}
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_8||''}
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Loài<br>
                                     ${duLieu?.thumua[0]?.loai_9||''}
                                 </td>
@@ -676,25 +676,25 @@ export const PrintfPDF0101 = async (data) => {
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Số đăng ký tàu
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Số giấy phép khai thác
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Vĩ độ
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Kinh độ
                                 </td>
             
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Tên loài thủy sản
             
                                 </td>
-                                <td style="width: 7%;" class="s4 center-table" bgcolor="#D1D6DB">
+                                <td  class="s4 center-table" bgcolor="#D1D6DB">
                                     Khối lượng (kg)
                                 </td>  
                             </tr>
